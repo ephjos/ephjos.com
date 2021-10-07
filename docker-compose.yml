@@ -1,0 +1,13 @@
+version: '3'
+services:
+  site:
+    container_name: site
+    image: josephthomashines/site
+    build: .
+    ports:
+      - "5001:5001"
+    volumes:
+      - ./public:/var/www
+      - ./nginx:/etc/nginx
+    environment:
+      - TZ="America/New_York"
