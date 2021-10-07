@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+
+<channel>
+   <title>ephjos</title>
+   <description>software development, small projects, and other thoughts</description>
+   <language>en-us</language>
+   <link>http://ephjos.io/blog/feed.xml</link>
+   <atom:link href="http://ephjos.io/blog/feed.xml" rel="self" type="application/rss+xml" />
+
+   <!--
+   <item>
+      <title>
+         simple native C visualization using Xlib and ffmpeg
+      </title>
+      <link>http://ephjos.io/blog/cfx</link>
+      <guid>http://ephjos.io/blog/cfx</guid>
+      <pubDate>Thu, 14 Jan 2021 12:00:00 -0400</pubDate>
+      <description><![CDATA[
+      ]]></description>
+    </item>
+    -->
+
+   <item>
+      <title>
+         simple native C visualization using Xlib and ffmpeg
+      </title>
+      <link>http://ephjos.io/blog/cfx</link>
+      <guid>http://ephjos.io/blog/cfx</guid>
+      <pubDate>Thu, 14 Jan 2021 12:00:00 -0400</pubDate>
+      <description><![CDATA[
+      <p> Since I set out to tackle this year's <a href="https://adventofcode.com/" target="_blank" rel="noopener noreferrer"> Advent of Code</a> using C, and I like making visualizations of some solutions, I needed a way to create visualizations from C code. Given this requirement, and a desire to work with Xlib, I set out to make a simple graphics header library to create these visualizations. After spending a lot of time searching the web, I found <a href="https://www3.nd.edu/~rbualuan/courses/fundcomp20/gfx/" target="_blank" rel="noreferrer noreferrer"> gfx</a>, which is a great starting point. This library provides a simple way to create a window and draw some primitives to it.  </p> <p> My initial concern was the lack of cleanup code present in gfx, so this is where I started. Delving into the amorphous and incomplete Xlib documentation was a pain, and I found that exploring the source code was a much more efficient way to understand the API. This was not a fun experience, but I managed to put something together that was usable and I am relatively happy with.  </p> <p> I created cfx, a header-only Xlib wrapper for simple visualizations that can be saved straight to disk using ffmpeg. The <a href="https://github.com/ephjos/cut/tree/main/cfx" target="_blank" rel="not noreferrer"> source code can be found on my github</a>.  </p> <hr /> <p> After all of this work, I ended up making only two animations, but I am happy with how they came out.  </p> <h3> Day 5 </h3> <video autoplay muted playsinline preload loop> <source src="/vid/aoc2020_d05.mp4" type="video/mp4"> Your browser cannot play this video, try downloading it <a href="/video/aoc2020_d05.mp4">here.</a> </video> <h3> Day 8 </h3> <video autoplay muted playsinline preload loop> <source src="/vid/aoc2020_d08.mp4" type="video/mp4"> Your browser cannot play this video, try downloading it <a href="/video/aoc2020_d08.mp4">here.</a> </video>
+      ]]></description>
+    </item>
+
+</channel>
+</rss>

@@ -1,0 +1,148 @@
+/*
+ * Import fonts
+ */
+@font-face {
+  font-family: JetBrains;
+  src: url("../font/JetBrainsMono-Regular.ttf");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: JetBrainsBold;
+  src: url("../font/JetBrainsMono-ExtraBold.ttf");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: Charter;
+  src: url("../font/CharterRegular.ttf");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: CharterBold;
+  src: url("../font/CharterBold.ttf");
+  font-display: swap;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  border: none;
+  box-sizing: border-box;
+}
+
+html {
+  /*
+   * Variable declarations, available everywhere on the page
+   */
+  --bg: #222;
+  --bg-light: #444;
+  --gray: #c5c6c7;
+  --cyan: #66fcf1;
+  --pink: #f64c72;
+  --text: #fafafa;
+  --text-muted: #c0c0c0;
+  --link-blue: #6495ED;
+}
+
+nav a + a,
+footer a + a {
+  margin-left: 0.5em;
+}
+
+body {
+  font-family: "JetBrains", mono;
+  font-size: 1rem;
+
+  background: var(--bg);
+  color: var(--text);
+
+  max-width: 60ch;
+  margin: 2em auto 1em auto;
+  padding: 0.5rem;
+  overflow-x: hidden;
+}
+
+footer {
+  width: 100%;
+  text-align: center;
+}
+
+b {
+  font-family: "JetBrainsBold", mono;
+}
+
+a {
+  color: var(--link-blue);
+}
+
+p {
+  margin: 1em 0;
+}
+
+span {
+  font-family: "JetBrainsBold", mono;
+  color: var(--text-muted);
+}
+
+ul {
+  margin-left: 2rem;
+}
+
+ul.posts {
+  margin: 1em 0;
+  list-style-type: none;
+}
+
+ul.posts li {
+  margin: 0.5em 0;
+  color: var(--text-muted);
+}
+
+ul.posts a {
+  display: block;
+  color: var(--pink);
+}
+
+h1, h2, h3 {
+  font-family: "JetBrains", mono;
+  margin: 1em 0;
+}
+h1 { color: var(--cyan); }
+h2 { color: var(--pink); }
+h3 { font-weight: 900; }
+
+code {
+  background-color: var(--bg-light);
+  padding: 0 0.25rem;
+}
+
+main {
+  font-family: "Charter", serif;
+  margin: 1em 0 2em 0;
+}
+
+blockquote {
+  font-family: "Charter", serif;
+  font-size: 16px;
+  color: var(--text);
+  line-height: 125%;
+  margin-left: 20px;
+  padding-left: 20px;
+  border-left: 10px solid var(--bg-light);
+}
+
+img {
+  display: block;
+  margin: 10px 0 10px 0;
+  padding: 10px 0 10px 0;
+  width: 100%;
+}
+
+video {
+  display: block;
+  width: 100% !important;
+  height: auto !important;
+  background-color: black;
+}
