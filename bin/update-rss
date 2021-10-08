@@ -1,0 +1,56 @@
+#!/bin/bash
+
+rss_tail="
+</channel>
+</rss>
+"
+
+#   <item>
+#      <title>
+#         simple native C visualization using Xlib and ffmpeg
+#      </title>
+#      <link>http://ephjos.io/blog/cfx</link>
+#      <guid>http://ephjos.io/blog/cfx</guid>
+#      <pubDate>Thu, 14 Jan 2021 12:00:00 -0400</pubDate>
+#      <description><![CDATA[
+#      ]]></description>
+#    </item>
+
+for blog in "./public/blog" "./public/daily"; do
+  rss_head="$blog/.shared/rss_head"
+  target="$blog/feed.xml"
+
+  files=$(find "$blog" -name "*.html" \
+    | grep -v "index.html");
+
+  cat "$rss_head" > "$target";
+
+  for file in "$files"; do
+    header=$(cat "$file" \
+      | awk '/<main>/,/<section>/' \
+      | awk 'NR>2 {print last} {last=$0}');
+    input_date=$(echo "$header" | head -n 1 | sed -e 's/\s*<span>\(.*\)<\/span>/\1/');
+    pub_date=$(date -R -d "$input_date 12:00");
+    title=$(echo "$header" | tail -n 1 | sed -e 's/\s*<h2>\(.*\)<\/h2>/\1/');
+    content=$(cat "$file" \
+      | awk '/<section>/,/<\/section>/' \
+      | awk 'NR>2 {print last} {last=$0}' \
+      | tr '\n' ' ');
+    slug=$(echo "$file" | sed -e 's/\.\/public//g')
+
+    echo "
+      <item>
+        <title>$title</title>
+        <link>http://ephjos.io$slug</link>
+        <guid>http://ephjos.io$slug</guid>
+        <pubDate>$pub_date</pubDate>
+        <description><![CDATA[
+        $content
+        ]]></description>
+      </item>
+    " >> "$target";
+
+  done
+
+  echo "$rss_tail" >> "$target";
+done
