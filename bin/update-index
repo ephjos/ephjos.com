@@ -31,7 +31,18 @@ for blog in "blog" "daily"; do
       <ul class=\"posts\">
   " > "$target";
 
-  for file in "$files"; do
+  files_with_dates=""
+  for file in ${files//\\n/ }; do
+    header=$(cat "$file" \
+      | awk '/<main>/,/<section>/' \
+      | awk 'NR>2 {print last} {last=$0}');
+    input_date=$(echo "$header" | head -n 1 | sed -e 's/\s*<span>\(.*\)<\/span>/\1/');
+    files_with_dates=$(echo "$files_with_dates$input_date $file\n")
+  done
+
+  sorted_files=$(echo -e "$files_with_dates" | grep "." | sort -nr | cut -d " " -f 2)
+
+  for file in ${sorted_files//\\n/ }; do
     header=$(cat "$file" \
       | awk '/<main>/,/<section>/' \
       | awk 'NR>2 {print last} {last=$0}');
@@ -41,7 +52,7 @@ for blog in "blog" "daily"; do
       | awk '/<section>/,/<\/section>/' \
       | awk 'NR>2 {print last} {last=$0}' \
       | tr '\n' ' ');
-    slug=$(echo "$file" | sed -e 's/\.\/public//g')
+    slug=$(echo "$file" | sed -e 's/\.\/public//g' | cut -d "." -f 1)
 
     echo "
         <li>

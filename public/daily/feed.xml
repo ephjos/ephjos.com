@@ -10,9 +10,20 @@
 
 
       <item>
+        <title>2</title>
+        <link>http://ephjos.io/daily/2021/10/08</link>
+        <guid>http://ephjos.io/daily/2021/10/08</guid>
+        <pubDate>Fri, 08 Oct 2021 12:00:00 -0400</pubDate>
+        <description><![CDATA[
+                <p>         So about that whole "rss feed by hand" thing.          <p>         I spent some time this morning writing a couple bash scripts         that iterate over the files for both blogs and         generates each their own rss feed <i>and</i> index page. This greatly         reduces the amount of work necessary for each post, while also forcing         me to stay in this simple format.          <p>         Yes, I am looking at the inflexibility of a hacked together bash script         as a feature, not a bug in this case. I also committed the sin of         using regex to parse text out of HTML, <a href="https://stackoverflow.com/questions/1732348/regex-match-open-tags-except-xhtml-self-contained-tags/1732454"         >but I think I'll be okay</a>.          <p>         All in all, I am pretty happy with how everything works right now. To         create a post I copy my template file to the new post, write it, and         run a bash script before pushing git and docker. As long as I follow         some simple formatting that my scripts expect, all should be well.          <p>         I also noticed some super strange caching behavior when testing the         site on my other devices yesterday, so I am pushing a change to stop         caching. These pages are small and lightweight enough that it shouldn't         matter, future me can worry about that. 
+        ]]></description>
+      </item>
+    
+
+      <item>
         <title>1</title>
-        <link>http://ephjos.io/daily/2021/10/07.html</link>
-        <guid>http://ephjos.io/daily/2021/10/07.html</guid>
+        <link>http://ephjos.io/daily/2021/10/07</link>
+        <guid>http://ephjos.io/daily/2021/10/07</guid>
         <pubDate>Thu, 07 Oct 2021 12:00:00 -0400</pubDate>
         <description><![CDATA[
               <p>       This is my first daily post. I am not really sure what this       will turn out to be, but I do want to see how far I can take it.       This will just be a place to jot down what's on my mind at       the time. Posts like projects or other more involved writing       will go in the main blog.        <p>       As of now, I am working on laying the website out again (for I       believe the 6th time). I am keeping the majority of the       UI/UX the same, but moving completely to a plain HTML/CSS/JS       stack.        <p>       I found out about SSI (Server Side Includes) the other day,       so I don't even need to use an external templating system.       Just set <code>ssi on</code> in nginx and get up and running.       This lets me share the head, navbar, and footer between pages       easily which was always my main deterrent from dropping all       the way down to bare HTML.        <p>       I've previously told myself that I don't like writing HTML and       that I <b>needed</b> a markdown setup in order to write, but       that certainly didn't lead to more writing.        <p>       So now, everything is dead simple. These posts don't       even really need markup, and in the cases that they do I'm       sure I'll get around to adding some useful snippets to my       vim config.        <p>       Creating the index pages and rss feed by hand is a bit strange,       but the whole theme of this effort is to <i>just do it</i>.        <p>       Here it goes! 

@@ -1,0 +1,4 @@
+#!/bin/bash
+
+./bin/update-index
+./bin/update-rss
