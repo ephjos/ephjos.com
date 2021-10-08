@@ -5,17 +5,6 @@ rss_tail="
 </rss>
 "
 
-#   <item>
-#      <title>
-#         simple native C visualization using Xlib and ffmpeg
-#      </title>
-#      <link>http://ephjos.io/blog/cfx</link>
-#      <guid>http://ephjos.io/blog/cfx</guid>
-#      <pubDate>Thu, 14 Jan 2021 12:00:00 -0400</pubDate>
-#      <description><![CDATA[
-#      ]]></description>
-#    </item>
-
 for blog in "./public/blog" "./public/daily"; do
   rss_head="$blog/.shared/rss_head"
   target="$blog/feed.xml"
