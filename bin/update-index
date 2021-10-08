@@ -1,0 +1,59 @@
+#!/bin/bash
+
+index_tail='
+      </ul>
+    </main>
+
+    <!--#include file="/.shared/footer.html" -->
+  </body>
+</html>
+'
+
+for blog in "blog" "daily"; do
+  target="./public/$blog/index.html"
+
+  files=$(find "./public/$blog" -name "*.html" \
+    | grep -v "index.html");
+
+  echo "
+<!DOCTYPE html>
+<html lang=\"en\">
+
+  <head>
+    <!--#include file=\"/.shared/head.html\" -->
+    <title>$blog - ephjos</title>
+  </head>
+
+  <body>
+    <!--#include file=\"/.shared/nav.html\" -->
+    <main>
+      <h1>$blog</h1>
+      <ul class=\"posts\">
+  " > "$target";
+
+  for file in "$files"; do
+    header=$(cat "$file" \
+      | awk '/<main>/,/<section>/' \
+      | awk 'NR>2 {print last} {last=$0}');
+    input_date=$(echo "$header" | head -n 1 | sed -e 's/\s*<span>\(.*\)<\/span>/\1/');
+    title=$(echo "$header" | tail -n 1 | sed -e 's/\s*<h2>\(.*\)<\/h2>/\1/');
+    content=$(cat "$file" \
+      | awk '/<section>/,/<\/section>/' \
+      | awk 'NR>2 {print last} {last=$0}' \
+      | tr '\n' ' ');
+    slug=$(echo "$file" | sed -e 's/\.\/public//g')
+
+    echo "
+        <li>
+          <b>
+          $input_date
+            <a href=\"$slug\">
+            $title
+            </a>
+          </b>
+        </li>
+      " >> "$target";
+  done
+
+  echo "$index_tail" >> "$target";
+done
