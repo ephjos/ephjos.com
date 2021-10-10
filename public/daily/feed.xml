@@ -10,6 +10,17 @@
 
 
       <item>
+        <title>4</title>
+        <link>http://ephjos.io/daily/2021/10/10</link>
+        <guid>http://ephjos.io/daily/2021/10/10</guid>
+        <pubDate>Sun, 10 Oct 2021 12:00:00 -0400</pubDate>
+        <description><![CDATA[
+                <p>         I've hit that point in implementing a ray tracer where I need to         start implementing structs that have 2D arrays. This is needed         for the canvas' pixels and eventually in the matrix implementation.         This is straightforward enough in an imperative language, but has been         a sticking point in the past.          <p>         After some brief research, Racket's mutable vectors seem easy enough to         use, and are probably exactly what I need in this case. I want to         try to avoid building up thunks in these areas of the code as that         can lead to a massive space leak (as I've learned in the past).          <p>         If Racket's vectors are anything like those from Haskell, I'll         most likely wind up falling back to Python just to finish this project.          <p>         Wish me luck. 
+        ]]></description>
+      </item>
+    
+
+      <item>
         <title>3</title>
         <link>http://ephjos.io/daily/2021/10/09</link>
         <guid>http://ephjos.io/daily/2021/10/09</guid>
