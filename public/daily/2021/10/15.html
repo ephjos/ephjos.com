@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <!--#include file="/.shared/head.html" -->
+    <title>9 - ephjos</title>
+  </head>
+
+  <body>
+    <!--#include file="/.shared/nav.html" -->
+    <main>
+      <span>2021/10/15</span>
+      <h2>9</h2>
+
+      <section>
+        <p>
+        After briefly getting into racket's vectors, I am becoming a bit
+        more hopeful of finishing the Ray Tracer Challenge in racket. They
+        are default mutable
+        and come with analogs for most of the standard list functions (map,
+        filter, etc.). While I like pure functional programming and understand
+        the value, mutability can provide great performance improvements
+        in some cases (like
+        ray tracing). I'll be using vectors in the canvas struct, which contains
+        an RGB tuple for each pixel in the image we are trying to generate.
+        I believe that the source of the issues I ran into in Haskell was precisely
+        writing pixels to the canvas. Instead of having to copy the canvas to
+        do writes, simply get a reference to the pixel data and update a color
+        at a specific location. No need to worry about passing around and using
+        as State monad (which I still have not figured out how to do), just update
+        the value in place. This is exciting!
+
+        <p>
+        On a related note, I can never figure out a naming for "mathematical
+        vectors" when using them alongside vector containers. I need to use
+        the standard
+        library's <code>make-vector</code> to create the pixel data container.
+        This meant that I needed to rename my 3D vector (and point since they
+        are both "tuples"). I've gone with <code>make-vector-3d</code> in
+        this case, but I'd rather call the container an <i>ArrayList</i>
+        instead.
+        Or, since "list" is the default container type
+        in racket, <i>Array</i> would work just fine and make sense.
+      </section>
+    </main>
+
+    <!--#include file="/.shared/footer.html" -->
+  </body>
+</html>
