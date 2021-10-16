@@ -5,6 +5,7 @@ dev:
 
 .PHONY: push
 push:
+	sh ./bin/update
 	docker-compose build
 	docker-compose push
 	git push
