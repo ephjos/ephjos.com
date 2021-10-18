@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <!--#include file="/.shared/head.html" -->
+    <title>12 - ephjos</title>
+  </head>
+
+  <body>
+    <!--#include file="/.shared/nav.html" -->
+    <main>
+      <span>2021/10/18</span>
+      <h2>12</h2>
+
+      <section>
+        <p>
+        Today I was able to finish the canvas chapter of the Ray Tracer Challenge
+        in racket. I spend a good bit of time digging through the racket docs
+        on basic string building and was able to get everything working.
+        The usage of vectors for storing the pixel data feels fast, but
+        converting the
+        pixel data to the output (PPM) string is slow.
+        This is somewhat expected, but is still a point of concern.
+        There are two aspects of this process that slow it down: converting
+        the vector to a list and string concatenation. Ideally, I would
+        directly pull the data out of the vector and add it to buffer, which
+        could then be written to the output file. The current implementation
+        uses higher-level string functions that will likely crush performance
+        going forward. This should not bring things to a halt, and the output
+        should still always be generated. Regardless, I expect to be back in
+        this code in the near future.
+
+        <p>
+        If I was to do this in Java, I would pull the information directly out
+        of an <code>Array</code> and append it to a <code>StringBuilder</code>.
+        Then, the <code>StringBuilder</code> could write its contents to the
+        output file. This solution would be quick and easy to read. I should
+        be able to get similar performance out of racket, once I learn more.
+
+      </section>
+    </main>
+
+    <!--#include file="/.shared/footer.html" -->
+  </body>
+</html>
