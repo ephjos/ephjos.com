@@ -10,6 +10,17 @@
 
 
       <item>
+        <title>11</title>
+        <link>http://ephjos.io/daily/2021/10/17</link>
+        <guid>http://ephjos.io/daily/2021/10/17</guid>
+        <pubDate>Sun, 17 Oct 2021 12:00:00 -0400</pubDate>
+        <description><![CDATA[
+                <p>         Another slight mindset shift I am trying to make is to focus on         problems, not solutions. This idea is parroted around a lot especially         in online-entrepreneur-influencer circles, but I think it does have         some value. For someone who can obsess over what the "best"         solution to a problem is and make the entire much more difficult for         himself, this tweak may prove helpful. Instead of being occupied         purely with the solution, pour more time and effort into learning about         the problem. The classic questions of who, what, where, why, when, and         how are all of the tools needed here.          <p>         The core hypothesis behind this idea is that a good solution should be         evident from the problem, once you have enough data about the problem.         Instead of languishing about large-scale architecture mistakes and         refactors, focus on the specific issue at hand. If the original author         is still on the team, reach out to them for some information. A quick         slack message may illuminate something before unseen to you. Identify         exactly what the issue is, and try to keep this definition targeted.         Pinpoint exactly where in both the code and the product this issue         occurs. Enumerate every place where this is the case, which may be         helpful for testing at the end. Understand what decisions/mistakes led         to this issue being checked-in to the code base. List out all of the         different manners in which the issue can be caused. Is it reproducible?         Is it deterministic? Given all of this information on top of the code         itself, clearly explain how the issue occurs. From code decisions to         what manifests to the end user, you should be able to explain each step         along the way and what pieces contribute to the final result.          <p>         With this detailed of a view on the problem, a list of potential         solutions should become immediately clear. Rank these solutions and         get feedback from team members (if necessary) before moving forward with         the best choice. Don't treat this is as a binding agreement: more         information may become available while working on this fix that reveals         another solution as a better choice. If unconstrained by time, feel free         to switch to the new approach.          <p>         Instead of focusing on the solution, obsess over the problem. Gather         info and make an educated decision on how to best tackle the problem.         The goal is to fix the issue: not to create your masterpiece.  
+        ]]></description>
+      </item>
+    
+
+      <item>
         <title>10</title>
         <link>http://ephjos.io/daily/2021/10/16</link>
         <guid>http://ephjos.io/daily/2021/10/16</guid>
