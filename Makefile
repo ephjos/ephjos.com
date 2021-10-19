@@ -6,7 +6,7 @@ dev:
 .PHONY: push
 push:
 	sh ./bin/update
-	git add -u
+	git add -A
 	git commit
 	docker-compose build
 	docker-compose push
