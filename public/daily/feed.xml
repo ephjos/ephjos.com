@@ -10,6 +10,17 @@
 
 
       <item>
+        <title>14</title>
+        <link>http://ephjos.io/daily/2021/10/20</link>
+        <guid>http://ephjos.io/daily/2021/10/20</guid>
+        <pubDate>Wed, 20 Oct 2021 12:00:00 -0400</pubDate>
+        <description><![CDATA[
+                <p>         When working on a piece of code, I am trying to be more mindful of         assumptions. It is easy enough to write down my assumptions while         reading code. This helps me check myself, and makes it easy to ask a         teammate targeted questions that can be answered with relative ease.         What's more difficult is checking external assumptions. In conversation,         it can be tricky to navigate but useful to ask someone "Are you assuming         X?". When done correctly, this can help everybody involved get on the         same page and focus on the task at hand. We also have to watch out for         assumptions in code we are monitoring. Some of these can be obvious,         laid out in a comment. Much like listing your own assumptions, these         are easy enough to verify. The danger comes from implicit assumptions.          <p>         We've all read and written functions that make assumptions about the         parameters that they are passed. This is especially dangerous in a         dynamically typed language, where any parameter can be any value.         Static typing does not wholly prevent this problem as there may be         edge cases within a type that must be accounted for. A function can         verify that its parameter is a number, but if it divides by that number         without checking it to be non-zero, than there are still dangerous         assumptions in the code.          <p>         These dangers extend past parameters and into all logic within a         program. We make assumptions about data flow, execution order, data         models, etc. that are all core to what the code does. While some of         these are unavoidable (i.e. synchronous code executes in order) we must         be mindful of all internal and external assumptions. Err on the side         of over communicating about these assumptions to better help your         team understand the piece of code being discussed. Pay close attention         to the code you read and write and be aware of any assumptions made         within.          <p>         Always check assumptions.  
+        ]]></description>
+      </item>
+    
+
+      <item>
         <title>13</title>
         <link>http://ephjos.io/daily/2021/10/19</link>
         <guid>http://ephjos.io/daily/2021/10/19</guid>
