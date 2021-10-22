@@ -8,6 +8,7 @@ rss_tail="
 for blog in "./public/blog" "./public/daily"; do
   rss_head="$blog/.shared/rss_head"
   target="$blog/feed.xml"
+  echo "Generating $target"
 
   files=$(find "$blog" -name "*.html" \
     | grep -v "index.html");
@@ -26,6 +27,7 @@ for blog in "./public/blog" "./public/daily"; do
   sorted_files=$(echo -e "$files_with_dates" | grep "." | sort -nr | cut -d " " -f 2)
 
   for file in ${sorted_files//\\n/ }; do
+    echo "  Parsing $file"
     header=$(cat "$file" \
       | awk '/<main>/,/<section>/' \
       | awk 'NR>2 {print last} {last=$0}');
