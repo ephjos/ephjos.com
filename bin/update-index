@@ -9,7 +9,7 @@ index_tail='
 </html>
 '
 
-for blog in "blog" "daily"; do
+for blog in "blog" "micro"; do
   target="./public/$blog/index.html"
   echo "Creating $target"
 

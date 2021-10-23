@@ -5,7 +5,7 @@ rss_tail="
 </rss>
 "
 
-for blog in "./public/blog" "./public/daily"; do
+for blog in "./public/blog" "./public/micro"; do
   rss_head="$blog/.shared/rss_head"
   target="$blog/feed.xml"
   echo "Generating $target"
