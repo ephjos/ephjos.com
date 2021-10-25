@@ -156,3 +156,18 @@ video {
   height: auto !important;
   background-color: black;
 }
+
+hr {
+  width: 3em;
+  border: 0.25em;
+  border-style: none none dotted;
+  color: var(--text);
+  margin: 0 auto;
+
+  user-select: none; /* supported by Chrome and Opera */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+}
+
