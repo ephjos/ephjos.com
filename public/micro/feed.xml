@@ -10,6 +10,17 @@
 
 
       <item>
+        <title>20</title>
+        <link>http://ephjos.io/micro/2021/10/26</link>
+        <guid>http://ephjos.io/micro/2021/10/26</guid>
+        <pubDate>Tue, 26 Oct 2021 12:00:00 -0400</pubDate>
+        <description><![CDATA[
+                <p>         I came across a post entitled         <a href="https://leancrew.com/all-this/2021/10/how-many-thursdays/">           How many Thursdays?</a> on Hackernews the other day. While the whole post is a great read,         there was one bit that stuck out to me. To summarize, the post tackles         how to answer the question of whether or not a month has 4 or 5         Thursdays in it (using an iOS Shortcut). The post then starts into         the solution with this paragraph:          <blockquote>           Since every month has 28–31 days, we know that each month has           four weeks plus 0–3 "extra" days. If the date of the first Thursday           is less than or equal to the number of extra days, there will           be five Thursdays in that month.         </blockquote>          <p>         Re-framing problems like this is what I love about computer science,         and this is a great example of it. Instead of taking the problem         straight on and just counting the number of days, there is a simple         way to rephrase the problem that makes the answer trivial. Instead of         a loop that may iterate 31 times (gasp!) the answer is as simple as         two lookups and a comparison.          <p>         This is a textbook elegant solution to me, and I think it has more to         do with reframing the question than coming up with a clever answer.         It reminds me of the first time I was able to wrap my head around         the         <a href="https://en.wikipedia.org/wiki/Monty_Hall_problem">           Monty Hall problem</a>.          <p>         Instead of focusing on the probability that         you pick the prize, focus on the probability that you initially pick a         goat. If 2/3 of the time you pick a goat, and you are always shown one         goat, switching results in you picking the car 2/3 of the time.          <p>         I think it will always fascinate me how these slight shifts in         perspective and framing can have such profound effects.  
+        ]]></description>
+      </item>
+    
+
+      <item>
         <title>19</title>
         <link>http://ephjos.io/micro/2021/10/25</link>
         <guid>http://ephjos.io/micro/2021/10/25</guid>
