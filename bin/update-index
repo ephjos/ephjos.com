@@ -10,11 +10,12 @@ index_tail='
 '
 
 for blog in "blog" "micro"; do
-  target="./public/$blog/index.html"
-  echo "Creating $target"
-
   files=$(find "./public/$blog" -name "*.html" \
-    | grep -v "index.html" | sort -r);
+    | egrep -v "(index.html|archive.html)" | sort -r);
+
+  # Write the archive index file that contains all posts
+  archive_target="./public/$blog/archive.html"
+  echo "Creating $archive_target"
 
   echo "
 <!DOCTYPE html>
@@ -29,8 +30,9 @@ for blog in "blog" "micro"; do
     <!--#include file=\"/.shared/nav.html\" -->
     <main>
       <h1>$blog</h1>
+      <p>All posts</p>
       <ul class=\"posts\">
-  " > "$target";
+  " > "$archive_target";
 
   for file in $files; do
     echo "  $file"
@@ -54,8 +56,59 @@ for blog in "blog" "micro"; do
             </a>
           </b>
         </li>
-      " >> "$target";
+      " >> "$archive_target";
   done
 
-  echo "$index_tail" >> "$target";
+  echo "$index_tail" >> "$archive_target";
+
+  # Write the "recent changes" index file
+  files_head="$(echo $files | cut -f "-5" -d " ")"
+  index_target="./public/$blog/index.html"
+  echo "Creating $index_target"
+
+  echo "
+<!DOCTYPE html>
+<html lang=\"en\">
+
+  <head>
+    <!--#include file=\"/.shared/head.html\" -->
+    <title>$blog - ephjos</title>
+  </head>
+
+  <body>
+    <!--#include file=\"/.shared/nav.html\" -->
+    <main>
+      <h1>$blog</h1>
+      <p>Recent posts</p>
+      <ul class=\"posts\">
+  " > "$index_target";
+
+  for file in $files_head; do
+    echo "  $file"
+    header=$(cat "$file" \
+      | awk '/<main>/,/<section>/' \
+      | awk 'NR>2 {print last} {last=$0}');
+    input_date=$(echo "$header" | head -n 1 | sed -e 's/\s*<span>\(.*\)<\/span>/\1/');
+    title=$(echo "$header" | tail -n 1 | sed -e 's/\s*<h2>\(.*\)<\/h2>/\1/');
+    content=$(cat "$file" \
+      | awk '/<section>/,/<\/section>/' \
+      | awk 'NR>2 {print last} {last=$0}' \
+      | tr '\n' ' ');
+    slug=$(echo "$file" | sed -e 's/\.\/public//g' | cut -d "." -f 1)
+
+    echo "
+        <li>
+          <b>
+          $input_date
+            <a href=\"$slug\">
+            $title
+            </a>
+          </b>
+        </li>
+      " >> "$index_target";
+  done
+
+  echo "<li><a href=\"/$blog/archive.html\">Archive</a></li>" >> $index_target;
+  echo "$index_tail" >> "$index_target";
+
 done

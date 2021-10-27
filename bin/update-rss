@@ -11,7 +11,7 @@ for blog in "./public/blog" "./public/micro"; do
   echo "Generating $target"
 
   files=$(find "$blog" -name "*.html" \
-    | grep -v "index.html" | sort -r);
+    | egrep -v "(index.html|archive.html)" | sort -r);
 
   cat "$rss_head" > "$target";
 
