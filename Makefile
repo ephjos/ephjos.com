@@ -1,7 +1,8 @@
 
 .PHONY: dev
 dev:
-	docker-compose up --build
+	browser-sync start --no-open --no-ui --watch --files "**/*" --proxy localhost:5001 &
+	docker-compose up --build &
 
 .PHONY: push
 push:
