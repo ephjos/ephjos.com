@@ -10,6 +10,17 @@
 
 
       <item>
+        <title>26</title>
+        <link>http://ephjos.io/micro/2021/11/01</link>
+        <guid>http://ephjos.io/micro/2021/11/01</guid>
+        <pubDate>Mon, 01 Nov 2021 12:00:00 -0400</pubDate>
+        <description><![CDATA[
+                <p>         Sometimes, I find myself feeling deep appreciation for         well-designed libraries. This happens every time I have to write         my own matrix manipulation code. The actual mathematics is         not too difficult, and neither is the implementation (optimization         aside), but making a good interface is a pain. I will always         appreciate numpy and how seamless it is to use the ndarray.         The entire library is a great example of an extremely         performant backend and a stupid simple interface. Making such         a powerful tool so easy to use will always impress and inspire me.          <p>         I like numpy :)  
+        ]]></description>
+      </item>
+    
+
+      <item>
         <title>25</title>
         <link>http://ephjos.io/micro/2021/10/31</link>
         <guid>http://ephjos.io/micro/2021/10/31</guid>
