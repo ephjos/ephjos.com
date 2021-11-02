@@ -3,25 +3,13 @@
  */
 @font-face {
   font-family: JetBrains;
-  src: url("../font/JetBrainsMono-Regular.ttf");
-  font-display: swap;
-}
-
-@font-face {
-  font-family: JetBrainsBold;
-  src: url("../font/JetBrainsMono-ExtraBold.ttf");
+  src: url("../font/JetBrainsMono-Regular.woff2");
   font-display: swap;
 }
 
 @font-face {
   font-family: Charter;
-  src: url("../font/CharterRegular.ttf");
-  font-display: swap;
-}
-
-@font-face {
-  font-family: CharterBold;
-  src: url("../font/CharterBold.ttf");
+  src: url("../font/CharterRegular.woff2");
   font-display: swap;
 }
 
@@ -46,6 +34,18 @@ html {
   --link-blue: #6495ED;
 
   font-size: 16px;
+
+  line-height: 1.5;
+
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased !important;
+  -moz-font-smoothing: antialiased !important;
+  text-rendering: optimizelegibility !important;
+
+  font-kerning: normal;
+
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
 }
 
 nav a + a,
@@ -72,7 +72,7 @@ footer {
 }
 
 b {
-  font-family: "JetBrainsBold", mono;
+  font-family: "JetBrains", mono;
 }
 
 a {
@@ -84,7 +84,7 @@ p {
 }
 
 span {
-  font-family: "JetBrainsBold", mono;
+  font-family: "JetBrains", mono;
   color: var(--text-muted);
 }
 
