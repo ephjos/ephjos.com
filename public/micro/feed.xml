@@ -10,6 +10,17 @@
 
 
       <item>
+        <title>28</title>
+        <link>http://ephjos.io/micro/2021/11/03</link>
+        <guid>http://ephjos.io/micro/2021/11/03</guid>
+        <pubDate>Wed, 03 Nov 2021 12:00:00 -0400</pubDate>
+        <description><![CDATA[
+                <p>         I had a realization today that I <i>think</i> I may be able to get         my old Haskell ray tracer up and working. As it turns out, I may have         been completely wrong when expecting the program to be able to         generate high-resolution images. The implementation obviously has its         flaws, however I think I was simply expecting too much of it. This         clicked when I realized that the book suggests using much lower         resolutions than I expected when rendering. Even for a completely         blank canvas, the design of the program will lead to high memory usage.         This usage quickly exceeds what is feasible, aside from other         implementation details.          <p>         I am going to max out my python implementation at 640x480 images and         try to finish the book. If I find myself inspired, I'll loop         back to my Haskell implementation (still hidden in my git history)         and try the same there.          <p>         I don't know why this never hit me before, but I'll chalk it up to         the Covid outbreak starting while I worked on this. That sounds like         a good enough excuse to me :)          <p>         The affect that perspective and time spent away from a problem         can have on one's perception of the problem will always surprise me.         This seems dead simple to me now.  
+        ]]></description>
+      </item>
+    
+
+      <item>
         <title>27</title>
         <link>http://ephjos.io/micro/2021/11/02</link>
         <guid>http://ephjos.io/micro/2021/11/02</guid>

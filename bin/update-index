@@ -14,7 +14,7 @@ for blog in "blog" "micro"; do
   echo "Creating $target"
 
   files=$(find "./public/$blog" -name "*.html" \
-    | grep -v "index.html" | sort -r);
+    | egrep -v "index.html|\.shared" | sort -r);
 
   echo "
 <!DOCTYPE html>

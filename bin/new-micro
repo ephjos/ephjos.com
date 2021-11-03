@@ -1,0 +1,39 @@
+#!/bin/sh
+
+create_file() {
+  if [ -z "$1" ]; then
+    echo "No filename provided"
+    exit 1
+  fi
+
+  if ! [[ $1 =~ \.html$ ]]; then
+    echo "File does not have a .html extension"
+    exit 2
+  fi
+
+  mkdir -pv "./public/micro/$(dirname "$1")"
+  cp -nv "./public/micro/.shared/template.html" "./public/micro/$1"
+}
+
+run_update() {
+  sh ./bin/update
+}
+
+update_file() {
+  eval "$EDITOR" "./public/micro/$1"
+}
+
+edit_file() {
+  eval "$EDITOR" "./public/micro/$1"
+}
+
+finish() {
+  read -p "Press enter to push changes"
+  make push
+}
+
+create_file "$@"
+update_file "$@"
+run_update "$@"
+edit_file "$@"
+finish "$@"
