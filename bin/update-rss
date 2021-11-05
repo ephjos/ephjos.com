@@ -8,7 +8,6 @@ rss_tail="
 for blog in "./public/blog" "./public/micro"; do
   rss_head="$blog/.shared/rss_head"
   target="$blog/feed.xml"
-  echo "Generating $target"
 
   files=$(find "$blog" -name "*.html" \
     | egrep -v "index.html|\.shared" | sort -r);
@@ -16,7 +15,6 @@ for blog in "./public/blog" "./public/micro"; do
   cat "$rss_head" > "$target";
 
   for file in $files; do
-    echo "  $file"
     header=$(cat "$file" \
       | awk '/<main>/,/<section>/' \
       | awk 'NR>2 {print last} {last=$0}');
@@ -44,4 +42,5 @@ for blog in "./public/blog" "./public/micro"; do
   done
 
   echo "$rss_tail" >> "$target";
+  echo "Generated $target"
 done

@@ -11,7 +11,6 @@ index_tail='
 
 for blog in "blog" "micro"; do
   target="./public/$blog/index.html"
-  echo "Creating $target"
 
   files=$(find "./public/$blog" -name "*.html" \
     | egrep -v "index.html|\.shared" | sort -r);
@@ -33,7 +32,6 @@ for blog in "blog" "micro"; do
   " > "$target";
 
   for file in $files; do
-    echo "  $file"
     header=$(cat "$file" \
       | awk '/<main>/,/<section>/' \
       | awk 'NR>2 {print last} {last=$0}');
@@ -58,4 +56,5 @@ for blog in "blog" "micro"; do
   done
 
   echo "$index_tail" >> "$target";
+  echo "Generated $target"
 done

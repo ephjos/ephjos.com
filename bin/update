@@ -1,4 +1,5 @@
 #!/bin/bash
 
-./bin/update-index
-./bin/update-rss
+./bin/update-index &
+./bin/update-rss &
+wait
