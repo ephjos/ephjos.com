@@ -7,8 +7,8 @@
 <meta property="og:image" content="/img/logo_card.webp">
 <meta property="twitter:image" content="/img/logo_card.webp">
 
-<link rel="preload" href="/font/JetBrainsMono-Regular.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="/font/CharterRegular.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/font/JetBrainsMono-Regular.subset.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/font/CharterRegular.subset.woff2" as="font" type="font/woff2" crossorigin>
 
 
 <style>
@@ -17,13 +17,13 @@
  */
 @font-face {
   font-family: JetBrains;
-  src: url("/font/JetBrainsMono-Regular.woff2");
+  src: url("/font/JetBrainsMono-Regular.subset.woff2");
   font-display: swap;
 }
 
 @font-face {
   font-family: Charter;
-  src: url("/font/CharterRegular.woff2");
+  src: url("/font/CharterRegular.subset.woff2");
   font-display: swap;
 }
 
@@ -175,7 +175,7 @@ video {
 hr {
   width: 3em;
   border: 0.25em;
-  border-style: none none dotted;
+  border-style: none none solid;
   color: var(--text);
   margin: 0 auto;
 
