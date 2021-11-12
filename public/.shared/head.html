@@ -37,7 +37,7 @@ html {
    * Variable declarations, available everywhere on the page
    */
   --bg: #222;
-  --bg-light: #444;
+  --bg-light: #333;
   --gray: #c5c6c7;
   --cyan: #66fcf1;
   --pink: #f64c72;
@@ -135,9 +135,14 @@ h1 { color: var(--cyan); }
 h2 { color: var(--pink); }
 h3 { font-weight: 900; }
 
+pre {
+  padding: 1rem;
+  background-color: var(--bg-light);
+  overflow: auto;
+}
+
 code {
   background-color: var(--bg-light);
-  padding: 0 0.25rem;
 }
 
 main {
