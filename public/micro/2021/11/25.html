@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <!--#include file="/.shared/head.html" -->
+    <title>pypy is cool - ephjos</title>
+  </head>
+
+  <body>
+    <!--#include file="/.shared/nav.html" -->
+    <main>
+      <span>2021/11/25</span>
+      <h2>pypy is cool</h2>
+
+      <section>
+        <p>
+        In the last post I talked about the performance of the ray tracer
+        I am writing in python and found myself quite unhappy. I did some
+        digging into alternate interpreters and found
+        <a href="https://www.pypy.org/">
+          pypy</a> which does JIT compilation and focuses on long running
+        computationally intense tasks. It sounded up for the job, so I installed
+        it, got the right pip version and installed some packages, then ran it.
+
+        <p>
+        The cover image from the last post took ~17 minutes to render at 300px
+        by 300px. With pypy, the same image is rendered in ~4 minutes. In about
+        ~20 minutes, I was able to render it in 800px by 800px. This is all
+        a substantial improvement, and I am happy that it'll help speed up
+        my work until I get to more optimizations. I am also able to push
+        the rewrite in a compiled language into the future as I don't
+        think it'll be required for me to finish the book and render some
+        images.
+
+        <hr />
+
+        <p>
+        Today is Thanksgiving, and I am deeply thankful for all of the people
+        and things that make life worth living. I feel grateful for life
+        itself and everything that comes with it, the good and the bad. Being
+        alive is a great thing.
+
+        <p>
+        Happy Thanksgiving!
+
+      </section>
+    </main>
+
+    <!--#include file="/.shared/footer.html" -->
+  </body>
+</html>
