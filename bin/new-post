@@ -11,8 +11,8 @@ create_file() {
     exit 2
   fi
 
-  mkdir -pv "./public/micro/$(dirname "$1")"
-  cp -nv "./public/micro/.shared/template.html" "./public/micro/$1"
+  mkdir -pv "./public/$(dirname "$1")"
+  cp -nv "./public/.shared/post-template.html" "./public/$1"
 }
 
 run_update() {
@@ -20,11 +20,11 @@ run_update() {
 }
 
 update_file() {
-  eval "$EDITOR" "./public/micro/$1"
+  eval "$EDITOR" "./public/$1"
 }
 
 edit_file() {
-  eval "$EDITOR" "./public/micro/$1"
+  eval "$EDITOR" "./public/$1"
 }
 
 finish() {
