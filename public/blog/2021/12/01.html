@@ -52,9 +52,24 @@
 
         <div>
           <h3>Day 02</h3>
-          <p></p>
+          <p>
+            This was another standard AOC problem, I think every year has
+            several "grid movement from commands" types of problems.
+          </p>
           <h4>Part 1</h4>
+          <p>
+            Keep track of x position and depth.
+            For each line of the input, split out the command and its value.
+            Based on the command, increment/decrement the correct values.
+            Multiply x and depth at the end.
+          </p>
           <h4>Part 2</h4>
+          <p>
+            Same as above but now up and down modify a new variable instead
+            of depth, aim.
+            Now, when moving forward, we update depth using aim and the
+            current value. Multiply x and depth to get the answer.
+          </p>
         </div>
 
         <div>
