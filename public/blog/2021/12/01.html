@@ -74,9 +74,26 @@
 
         <div>
           <h3>Day 03</h3>
-          <p></p>
+          <p>
+            Today was a grind. I could not shake the feeling that I was
+            missing an obvious bit manipulation trick, but I eventually
+            went on to using strings and vectors.
+          </p>
           <h4>Part 1</h4>
+          <p>
+            Loop over all of the numbers, keeping count of how which digit
+            occurred more in each column. Go over the counts, and construct
+            the bits back into two integers before multiplying them and
+            returning the result.
+          </p>
           <h4>Part 2</h4>
+          <p>
+            The strategy here was iteratively remove numbers from the list
+            until one was remaining. Each iteration would calculate the
+            digit counts and then remove all rows that did not match the
+            key so far. Do this for the first and second rule before
+            multiplying them and returning.
+          </p>
         </div>
 
         <div>
