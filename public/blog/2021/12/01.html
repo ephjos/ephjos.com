@@ -98,9 +98,33 @@
 
         <div>
           <h3>Day 04</h3>
-          <p></p>
+          <p>
+            Today was a mess. I am not experienced enough with parsing in Rust,
+            and today's puzzle format amplified that. I also made the mistake
+            of trying to mutate a struct/vec in a loop while using its iterator.
+            This can't be done since it would require 2 mutable references
+            to be alive at the same time. The easy solution is to fallback
+            to a simple for loop that iterates an integer over the length of
+            the array, then getting a mutable reference for each element on
+            every iteration.
+          </p>
           <h4>Part 1</h4>
+          <p>
+            Parse out the draws and boards. Created a board struct with 2
+            methods. Iterate over the list of draws. For each draw, iterate over
+            all boards. For each board, mark off (set to -1) the draw then
+            check for Bingo. If there is a bingo, get the sum of all values
+            that aren't -1 and multiply this sum by the draw number before
+            returning.
+          </p>
           <h4>Part 2</h4>
+            Parse out the draws and boards. Created a board struct with 2
+            methods. Iterate over the list of draws. For each draw, iterate over
+            all boards. For each board, mark off (set to -1) the draw then
+            check for Bingo. If there is a bingo and there are other boards
+            remaining, remove the board from the board list. If there is a
+            bingo and this is the last board, return its score.
+          </p>
         </div>
 
         <div>
