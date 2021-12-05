@@ -129,9 +129,27 @@
 
         <div>
           <h3>Day 05</h3>
-          <p></p>
+          <p>
+            Today wasn't bad at all! Parsing the input was straightforward
+            and the problem itself was fine. I had some hiccups with using
+            HashMaps in Rust, but didn't have any issues once I refreshed my
+            knowledge on them.
+          </p>
           <h4>Part 1</h4>
+          <p>
+            Parse out each line into a start and end point. For each pair,
+            skip if they are not on the same line. Then, iterate over the line
+            and add each point to a <code>HashMap<Point2d, usize></code> to
+            count how many times we see the point. At the end, return
+            the number of values in the hashmap that have a count greater
+            than 1.
+          </p>
           <h4>Part 2</h4>
+          <p>
+            Same as above except for non-linear points, connect
+            them with a line of slope 1 or -1, which can be determined by
+            looking at their difference.
+          </p>
         </div>
 
         <div>
