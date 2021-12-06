@@ -154,9 +154,36 @@
 
         <div>
           <h3>Day 06</h3>
-          <p></p>
+          <p>
+            This puzzle was one of my favorite types of AOC problems, where
+            part2 is just part1 but scaled up. This usually involves some kind
+            of exponential growth and greatly punishes the naive approach.
+            I suspect there is a straight numerical solution (this whole thing
+            screams rings), but I'll search for that later since my solution is
+            more than fast enough.
+          </p>
           <h4>Part 1</h4>
+          <p>
+            I back-ported my solution for part 2 here, but I initially
+            implemented the naive approach. Parse the list of input numbers
+            into a vector. For 80 iterations, look at each element in the fish
+            age list. If the current age is 0, set it back to 6 and add a fish
+            to the end with age 8. Otherwise, decrement the current age.
+            Return the length of this array.
+          </p>
           <h4>Part 2</h4>
+          <p>
+            Instead of keep a list of fish directly, I instead chose to keep
+            two lists, fish and new_fish. These vectors have length 7 and 9
+            respectively with the value representing the number of fish
+            at the age represented by the index. So if <code>fish[2] = 12</code>
+            that means there are 12 2-day old fish. Using this, I can
+            simply move over these vectors and "slide down" the groups of fish.
+            I keep 2 separate lists due to the different age resets: a new
+            fish starts at 8 and an old fish starts at 6. We perform the
+            same shuffle and add between these lists in each loop before
+            returning the sum of their sums.
+          </p>
         </div>
 
         <div>
