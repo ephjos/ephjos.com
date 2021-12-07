@@ -188,9 +188,27 @@
 
         <div>
           <h3>Day 07</h3>
-          <p></p>
+          <p>
+            These problems were fairly straightforward, but I messed myself up
+            on some integer rounding. I picked up on some statistical values
+            like median and mean being relevant, but didn't go with them on
+            the first try. I ended up brute forcing both parts and getting
+            my solutions before going back and optimizing my solution
+            based on others posted online.
+          </p>
           <h4>Part 1</h4>
+          <p>
+            For every possible position, calculate the total cost and see if
+            it is less than the minimum, saving if it is. Or, find the
+            median and calculate the cost to it.
+          </p>
           <h4>Part 2</h4>
+          <p>
+            Same as above, except the cost function is the sum from 0 to x.
+            Or, recognize this as the gaussian function <code>n*(n+1)/2</code>
+            and that the solution will be at either integer directly above
+            or below the mean.
+          </p>
         </div>
 
         <div>
