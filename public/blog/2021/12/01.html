@@ -213,16 +213,51 @@
 
         <div>
           <h3>Day 08</h3>
-          <p></p>
+          <p>
+            This day was hard, and I actually had to finish it the next day
+            which is never enjoyable. The first part is trivial, but the
+            second is not so much. I was able to come up with a solution,
+            but it was a grueling experience.
+          </p>
           <h4>Part 1</h4>
+          <p>
+            Parse the input into "uniques" and "outputs". Count the number
+            of output strings with lengths 1,2,4, and 7.
+          </p>
           <h4>Part 2</h4>
+          <p>
+            The approach I used is far from the most efficient but was the
+            only way I was able to logically step through the problem. Given
+            the easy to find numbers from above, compare them and start to
+            uniquely identify segments. The top is the segment present in 7 but
+            not in 1. The middle is the segment present in 4 and all of the
+            5 length strings. Carry this on, comparing what segments using
+            their size and previous segments until a full mapping is defined.
+            Iterate over the outputs and convert them to digits using this
+            mapping, then add the number they make to counter. Return the
+            counter.
+          </p>
         </div>
 
         <div>
           <h3>Day 09</h3>
-          <p></p>
+          <p>
+            These problems were much better than yesterday's.
+          </p>
           <h4>Part 1</h4>
+          <p>
+            Parse the input into a grid. For each number in the grid, check
+            if it is smaller than all of its neighbors. If so, it is a minimum.
+            Track the indices of these minpoints. Return the amount of
+            minpoints found.
+          </p>
           <h4>Part 2</h4>
+          <p>
+            For each minpoint, perform a breadth first search where 9s are
+            not considered neighbors and return the size of the explored set.
+            Collect these sizes into a (max) binary heap, then pull off and multiply
+            the 3 biggest, returning their product.
+          </p>
         </div>
 
         <div>
