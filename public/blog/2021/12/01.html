@@ -262,16 +262,63 @@
 
         <div>
           <h3>Day 10</h3>
-          <p></p>
+          <p>
+            I was unable to get to AOC on the day this problem came out, so I
+            did it on Day 11, along with that day's problem. I enjoyed these
+            two problems, and found that they were pretty easy to solve.
+            With all of these bracket matching type questions, a stack is
+            your best friend.
+          </p>
           <h4>Part 1</h4>
+          <p>
+            Initialize a stack, the provided point map, and a points counter.
+            For each line, iterate over its characters. If one of the opening
+            brackets is found, push its corresponding closing bracket onto the
+            stack. Otherwise, pop the top of the stack and check if the
+            current charcter matches the one on the top of the stack. If it
+            doesn't,  perform the point lookup and update the counter.
+            At the end, return the total count.
+          </p>
           <h4>Part 2</h4>
+          <p>
+            Start with all of the above, except perform the counts per line.
+            If the point total for a line is not 0, it was corrupted and we
+            can skip it. Otherwise, the autocomplete_score will be the score
+            calculated using the characters remaining on the stack.
+            Create an autocomplete_score_map, and use that with the provided
+            algorithm to calculate the autocomplete_score. Return the
+            autocomplete_score over all lines.
+          </p>
         </div>
 
         <div>
           <h3>Day 11</h3>
-          <p></p>
+          <p>
+            This day was straightforward but enjoyable. The gotcha with these
+            automata-type problems can be nasty, but this specific setup
+            wasn't too bad.
+          </p>
           <h4>Part 1</h4>
+          <p>
+            Read the input into a grid. Create a step function that modifies
+            the grid and returns the number of flashes. This function first
+            increments everything in the grid by 1. Initialize the flash counter
+            and a boolean to keep track of if a flash happened
+            (default to true). While a flash has happened, set the flash boolean
+            to false and loop over all of the
+            cells and check for one > 9. If so, set it to 0 and increment all
+            of its neighbors by 1 that are also not 0. Set the flash boolean
+            to true and increment the flash counter by one. Return the flash
+            count. In the main function, create another counter. Call the step
+            function 100 times, adding each flash count to the total counter.
+            Return this total count.
+          </p>
           <h4>Part 2</h4>
+          <p>
+            Do the same as above, but ignore the flash_count. Loop until
+            all of the cells in the grid are 0, keeping track of how many
+            iterations its takes. Return the number of iterations.
+          </p>
         </div>
 
         <div>
