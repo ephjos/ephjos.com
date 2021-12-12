@@ -323,9 +323,33 @@
 
         <div>
           <h3>Day 12</h3>
-          <p></p>
+          <p>
+            This was rough. It took me way too long to recognize that I should
+            use DFS over BFS. In my implementation of DFS, I made the mistake
+            of having top-level logic along with logic inside of the neighbors
+            loop. This lead to me missing some edge cases in part 2 and
+            wasting a lot of time on a simple mistake. Also, given that
+            we are often revisiting nodes, a visited set is better replaced
+            with a path vector. Removing from the set can remove items that
+            are in the middle of the path, which is invalid and leads to
+            infinite loops and hard to debug stack overflows.
+          </p>
           <h4>Part 1</h4>
+          <p>
+            Use the input to build a map from node to list of neighbors.
+            Starting with the "start" node, perform dfs with an additional
+            check for revisiting small rooms. Count the number of paths
+            that lead to "end" and return this sum.
+          </p>
           <h4>Part 2</h4>
+          <p>
+            The same as above, except we introduce a boolean to keep track
+            of whether or not we've used our one small room revisit. It
+            starts as false, and is set to true when we revisit our first
+            small room. On subsequent calls, when we revisit another small
+            room, we return 0 and exit early if we've already used our revisit.
+            Part 1 is the same as Part 2 where this boolean starts as true.
+          </p>
         </div>
 
         <div>
