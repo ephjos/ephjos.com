@@ -354,9 +354,38 @@
 
         <div>
           <h3>Day 13</h3>
-          <p></p>
+          <p>
+            This problem was great! I enjoyed this one a lot and did not
+            anticipate the direction of part 2. I didn't have any issues
+            with today, which was much needed after yesterday.
+          </p>
           <h4>Part 1</h4>
+          <p>
+            Split the input into two big chunks using "\n\n". The first chunk
+            lays out all of the dots and the second contains the fold
+            instructions. Parse out the Points from the dots and
+            the folds. I used a Point2d struct to represent the (x,y) coords
+            and a Fold struct that holds the axis and line for each fold.
+            For the first fold, iterate over all of the dots. If the fold
+            is on the y axis, and the current dot's y value is greater than
+            the folding line, reflect the y value over the line. Otherwise,
+            return the dot unchanged. It the fold is on the x axis, do the
+            same but with the x values. Reflecting the value is as easy as
+            <code>line - (v - line)</code>, thanks to the fixed folding
+            direction. To handle overlapping, I store the dots in a HashSet
+            instead of a Vec. This allows me to just return the length of
+            the set for the answer
+          </p>
           <h4>Part 2</h4>
+          <p>
+            These are my favorite kinds of solutions. Throw all of the above
+            logic into a loop over all of the folds. After performing all
+            of the folds, get the max x and y values from the dots. For each
+            point on the grid they lay out, print out the empty string if
+            there is no dot, or a # if there is a dot at that point. This
+            will print out a grid that will draw out the 8 capital letters
+            that make up the answer.
+          </p>
         </div>
 
         <div>
