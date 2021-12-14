@@ -390,9 +390,41 @@
 
         <div>
           <h3>Day 14</h3>
-          <p></p>
+          <p>
+            Today was a bit tricky, but went smoothly once I recognized
+            how to get the answer for part 2. I figured this would be
+            one of the problems where the naive approach in part 1 would
+            not be feasible in part 2, but it took me a few minutes to
+            figure out a faster solution.
+          </p>
           <h4>Part 1</h4>
+          <p>
+            Split out the input into the template and list of rules. Create
+            a HashMap to keep a count of the characters. For 10 iterations,
+            do the following. Get the 2 character windows over the current
+            string. For each window, lookup its new value and insert it.
+            Increment the count of the new character. After 10 iterations,
+            get the maximum and minimum counts then return their difference.
+          </p>
           <h4>Part 2</h4>
+          <p>
+            Increasing the iterations to 40 here makes actually building
+            the list unfeasible. Instead, we will keep track of the count
+            of each pair of characters. Each iteration, save the current
+            state of the map and loop over all
+            of the known keys. Since the updates are supposed to happen
+            at the same time, we can't modify and read from the same
+            HashMap during the key loop. Get the count from the copied
+            HashMap and increment the counts for the new pairs by its values,
+            decrementing the value of the original pair.
+            If <code>AB -> C</code>, and <code>count[AB] = 3, count[AC] = 0, count[CB] = 0</code>, then
+            <code>count[AB] = 0, count[AC] = 3, count[CB] = 3</code>.
+            This builds the count of each pair, but does not account for or
+            encode their overlap. To remedy this, we also keep track of
+            the individual
+            character count. At the end of 40 iterations, we return in the
+            same fashion as part 1 using these individual counts.
+          </p>
         </div>
 
         <div>
