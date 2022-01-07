@@ -429,9 +429,27 @@
 
         <div>
           <h3>Day 15</h3>
-          <p></p>
+          <p>
+            Welp, the holidays happened and I didn't start this problem until
+            early January. Looks like I'll be playing catch-up yet again.
+            This problem was fairly straightforward, it is just shortest path
+            with a larger graph in the second part. This is most easily
+            accomplished with Dijkstra's algorithm. I had to actually use the
+            min-heap optimization for part 1, which the Rust docs
+            <a href="https://doc.rust-lang.org/std/collections/binary_heap/index.html">
+              contain a great example for</a>. This was fast enough to solve
+            part 2 as well.
+          </p>
           <h4>Part 1</h4>
+          <p>
+            Parse the text into a grid of danger values. Run Dijkstra, return
+            result.
+          </p>
           <h4>Part 2</h4>
+          <p>
+            Follow the rules to create the new 5x5 megagrid. Run Dijkstra,
+            return result.
+          </p>
         </div>
 
         <div>
