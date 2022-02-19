@@ -557,7 +557,28 @@
 
         <div>
           <h3>Day 21</h3>
-          <p></p>
+          <p>
+            This problem was enjoyable. I expected to be thrown off with
+            some ring math again due to the clear modulo in the problem
+            structure, but the problem did not go that way. Part 1 was
+            easy enough, once I sorted out how to do modulo [1,n] (subtract
+            1 before the modulo and add 1 after). Part 2 was daunting at
+            first, and the shear scale of possible games made recursion
+            seem unfeasible. I looked to see if the Chinese Remainder
+            Theorem could apply, but nothing of the sort popped out. I
+            then realized that we only care about the result of the 3 rolls,
+            not each roll individually. Since take the sum of these 3 rolls,
+            we can greatly reduce the search space thanks to the repeated sums.
+            There are 27 permutations with repeats for 1,2, and 3. However,
+            there are only 7 unique sums from these 27. Instead of
+            recursing for each of the 27 permutations, we can recurse for
+            each of the 7 sums and multiply the result by the frequency
+            of that sum. This worked first try, and I was proud to see
+            this approach on my own. I'm sure there is a faster way to do
+            this, and likely strip out some other branches too but I am
+            not interested in that right now. I am hoping for more
+            problems like this in the last 4.
+          </p>
         </div>
 
         <div>
