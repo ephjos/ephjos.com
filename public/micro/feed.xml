@@ -10,6 +10,17 @@
 
 
       <item>
+        <title>ray tracing in a weekend</title>
+        <link>http://ephjos.io/micro/2022/04/03</link>
+        <guid>http://ephjos.io/micro/2022/04/03</guid>
+        <pubDate>Sun, 03 Apr 2022 12:00:00 -0400</pubDate>
+        <description><![CDATA[
+                <p>           Welp, everything outlined in           <a href="/micro/2022/01/28">habits</a> definitely did not happen.           Something something best laid plans of mice and men.         </p>          <p>           I have been distracted with a few things, mostly playing around with           WebGL. I was pulled down the           <a href="https://www.shadertoy.com/">ShaderToy</a> rabbit hole and           have been playing around with all kinds of ideas. Most notably, I           implemented the           <a href="https://raytracing.github.io/books/RayTracingInOneWeekend.html">             Ray Tracing in One Weekend</a> project in a fragment shader, which           you will see below. I learned quite a bit about WebGL, passing data           to shaders, and pseudo-random number generation in shaders. The below           example uses a fixed canvas size of 256x256, stretched with CSS. There           are 73 balls placed randomly in the scene each time that the shader           is compiled, which happens every page load. All of the objects are           written as constant structs into the shader, and the main loop           is unrolled. The compiled shader is           logged to the console. Each ray is allowed to bounce 50 times. Also,           this appears to be a path tracer (to my understanding), since we are           taking random rays when we bounce, instead of the exact reflection.           I implemented some basic WebGL abstractions           and the progressive rendering using some of the logic in           <a href="https://github.com/evanw/webgl-path-tracing">             evanw's webgl-path-tracing</a>.         </p>          <div class="container">           <canvas id="glcanvas" width="256" height="256"></canvas>           <div id="overlay">             <div id="size"></div>             <div id="fps"></div>             <div id="frame"></div>           </div>           <div></div>         </div>          <p>           I also found           <a href="https://github.com/sschoenholz/WebGL-Raytracer">             sschoenholz's WebGL-Raytracer</a> which does some cool texture           packing to pass the scene information to the shader.         </p>          <p>           All-in-all, I learned quite a bit about WebGL, raytracing, and path           tracing which makes me interested in doing more. I am not interested in           trying to add anymore complex features to my existing python           implementation of the Ray Tracer Challenge, so I think it is           time for a rewrite in a lower-level language.         </p>          <hr />          While I have been better with using my phone less (thanks to locking         myself out from the internet using         <a href="https://freedom.to/">Freedom</a>), I still need to         get back in the groove with reading and writing.  
+        ]]></description>
+      </item>
+    
+
+      <item>
         <title>monty hall</title>
         <link>http://ephjos.io/micro/2022/03/15</link>
         <guid>http://ephjos.io/micro/2022/03/15</guid>
