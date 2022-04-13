@@ -10,6 +10,17 @@
 
 
       <item>
+        <title>dolly zoom</title>
+        <link>http://ephjos.io/micro/2022/04/13</link>
+        <guid>http://ephjos.io/micro/2022/04/13</guid>
+        <pubDate>Wed, 13 Apr 2022 12:00:00 -0400</pubDate>
+        <description><![CDATA[
+                <p>           Tinkering more with           <a href="https://raytracing.github.io/books/RayTracingInOneWeekend.html">             Ray Tracing In One Weekend</a>, I managed to render a dolly zoom.           The           <a href="https://en.wikipedia.org/wiki/Dolly_zoom">             Dolly Zoom Wikipedia page</a> has an equation for calculating           distance as a function of FOV, which made this straightforward.           I solved the equation for FOV instead, and then rendered a bunch of           frames while moving the camera closer to the center ball.         </p>          <video autoplay muted loop controls>             <source src="/vid/rtiow_dolly_00.mp4" type="video/mp4">             Cannot render video in your browser         </video>  
+        ]]></description>
+      </item>
+    
+
+      <item>
         <title>ray tracing in another weekend</title>
         <link>http://ephjos.io/micro/2022/04/11</link>
         <guid>http://ephjos.io/micro/2022/04/11</guid>
