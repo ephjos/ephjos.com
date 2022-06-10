@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <!--#include file="/.shared/head.html" -->
+    <title>limits - ephjos</title>
+  </head>
+
+  <body>
+    <!--#include file="/.shared/nav.html" -->
+    <main>
+      <span>2022/06/09</span>
+      <h2>limits</h2>
+
+      <section>
+        <p>
+          On a recent episode of the Tim Ferris Show
+          podcast, Tim Ferris had a conversation with Morgan Housel whose work
+          <a href="/micro/2021/11/28">has inspired me before</a>. I would
+          recommend the episode overall, but there was one small observation
+          from Morgan that has been stuck in my head
+          (<a href="https://tim.blog/2022/03/05/morgan-housel-the-psychology-of-money-transcript/">full transcript</a>):
+        </p>
+
+        <blockquote>
+... there’s a friend of mine named Carl Richards, who’s a financial advisor, and he has a quote where he says, “Risk is what is left over when you think you’ve thought of everything.” And I think that’s the definition of risk is whenever we’re done planning and forecasting, everything that’s left over that we haven’t thought about, that’s what risk actually is. And the takeaway from that, the actual practical takeaway is that if you are only planning for risks that you can think about and you can envision and you can imagine, then 10 times out of 10, you’re going to miss the biggest risk that actually hits you.
+        </blockquote>
+
+        <p>
+          As with a lot of Morgan's insight this was presented in the context of
+          finance and investing. However, his observations often apply in a
+          much more general context. When I heard this, my mind immediately
+          went to how I look at building software.
+        </p>
+
+        <p>
+          I've often had the problem where I start working on a new idea and
+          make decent progress, only to run into a snag that pokes holes in
+          my overall approach. At this point, I'd have to start back over with
+          my new perspective and take another crack at the problem. I had
+          always wondered why this happened, and what I could do to mitigate it.
+          I'd agonize about potential architectures and approaches that could
+          best solve the problem and find myself reluctant to start for fear
+          of taking the wrong approach. Morgan's observation is that this
+          is not something to fear, and is something that is hard to prevent.
+          It is precisely the things that you don't account for that will
+          trip you up, and it is nearly impossible to take <i>everything</i>
+          into account.
+        </p>
+
+        <hr />
+
+        <p>
+          A thread on HackerNews put me onto a few great talks, all starting
+          with
+          <a href="https://www.youtube.com/watch?v=pW-SOdj4Kkk">
+            Preventing the Collapse of Civilization by Jonathan Blow
+          </a>. This is a great talk in its own right, but for the purpose
+          of this post it served as the springboard into
+          <a href="https://www.youtube.com/watch?v=5IUj1EZwpJY">
+            The Only Unbreakable Law by Casey Muratori
+          </a>. In this talk, Casey builds up to and elaborates on something
+          known as
+          <a href="https://en.wikipedia.org/wiki/Conway%27s_law">
+            Conway's Law
+          </a>. This law states that organizations will produce output whose
+          structure is a copy of the organization's. Casey provides a few
+          great examples, most clearly how the structure of the Windows team
+          at Microsoft influenced the final operating system. The existence
+          of separate Direct Audio and Direct Input teams resulted in there
+          being two distinct software packages for handling audio and input.
+          These libraries, along with others, were wrapped under the DirectX
+          API, which was the overall product of the department
+          that contained all of the Direct teams.
+        </p>
+
+        <p>
+          There are a few core ideas here, but the one that clicked for me was
+          the idea that by defining a structure of organization, the
+          organization is inherently limited in the space of output it can
+          produce. From the Wikipedia page above, "If you have four groups
+          working on a compiler, you'll get a 4-pass compiler." In other words,
+          four groups working on a compiler are unable to make a 1-pass
+          compiler. There may be areas where it would make sense for the teams
+          to collaborate and avoid repeating work or find optimizations, but
+          the communication
+          costs for the 4 teams is too great. In order to coordinate that many
+          people on the project, they have to be put on teams. The way teams
+          are broken up will directly influence the shape of the output.
+        </p>
+
+        <p>
+          An organization, by its construction, may be incapable of producing
+          the best solution for the problem that the organization was created
+          to solve. However, some of these "optimal" solutions may not be able
+          to be formed into an organization. A single person can only hold
+          a certain amount of information in their head. There will be a point
+          where responsibility must be divided. Where this division is drawn
+          will directly impact the amount of possible outputs possible. These
+          observations apply to any organization, be it a company or the
+          layout of code.
+        </p>
+
+        <hr />
+
+        <p>
+          There are limits on what we can plan for. Trying to identify all
+          of the risks directly
+          <a href="https://en.wikipedia.org/wiki/Uncertainty_principle">
+            changes what our risks are</a>. We don't know what the best
+          solution to a problem is
+          before we find it. The way we organize our approach to the
+          problem directly restricts the set of solutions we can find.
+        </p>
+
+        <p>
+          Don't obsess over planning, focus on doing. Organize only where
+          absolutely necessary.
+        </p>
+
+      </section>
+    </main>
+
+    <!--#include file="/.shared/footer.html" -->
+  </body>
+</html>
