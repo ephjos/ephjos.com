@@ -12,8 +12,7 @@ index_tail='
 for blog in "blog" "micro"; do
   target="./public/$blog/index.html"
 
-  files=$(find "./public/$blog" -name "*.html" \
-    | egrep -v "index.html|\.shared" | sort -r);
+  files=$(find ./public/$blog/*/* -name "index.html" | sort -r);
 
   echo "
 <!DOCTYPE html>
@@ -41,7 +40,8 @@ for blog in "blog" "micro"; do
       | awk '/<section>/,/<\/section>/' \
       | awk 'NR>2 {print last} {last=$0}' \
       | tr '\n' ' ');
-    slug=$(echo "$file" | sed -e 's/\.\/public//g' | cut -d "." -f 1)
+    slug=$(dirname "$file" | sed -e 's/\.\/public//g' | cut -d "." -f 1)
+    echo "$file" "$slug"
 
     echo "
         <li>

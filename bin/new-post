@@ -6,13 +6,13 @@ create_file() {
     exit 1
   fi
 
-  if ! [[ $1 =~ \.html$ ]]; then
-    echo "File does not have a .html extension"
+  if [[ $1 =~ \.html$ ]]; then
+    echo "File does has an .html extension"
     exit 2
   fi
 
   mkdir -pv "./public/$(dirname "$1")"
-  cp -nv "./public/.shared/post-template.html" "./public/$1"
+  cp -nv "./public/.shared/post-template.html" "./public/$1/index.html"
 }
 
 run_update() {

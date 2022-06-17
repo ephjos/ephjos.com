@@ -5,12 +5,11 @@ rss_tail="
 </rss>
 "
 
-for blog in "./public/blog" "./public/micro"; do
-  rss_head="$blog/.shared/rss_head"
-  target="$blog/feed.xml"
+for blog in "blog" "micro"; do
+  rss_head="./public/$blog/.shared/rss_head"
+  target="./public/$blog/feed.xml"
 
-  files=$(find "$blog" -name "*.html" \
-    | egrep -v "index.html|\.shared" | sort -r);
+  files=$(find ./public/$blog/*/* -name "index.html" | sort -r);
 
   cat "$rss_head" > "$target";
 

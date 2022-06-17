@@ -361,7 +361,7 @@ CoreProgram.create = async function () {
 
   // Moved fragment shader to a separate file loaded at runtime to make dev
   // easier. This way is inefficient but removes the need for a bundling tool.
-  let renderFragmentSource = await fetch("./03.frag").then((res) =>
+  let renderFragmentSource = await fetch("./index.frag").then((res) =>
     res.text()
   );
   renderFragmentSource = CoreProgram.populateTemplate(renderFragmentSource);
