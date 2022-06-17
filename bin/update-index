@@ -41,7 +41,6 @@ for blog in "blog" "micro"; do
       | awk 'NR>2 {print last} {last=$0}' \
       | tr '\n' ' ');
     slug=$(dirname "$file" | sed -e 's/\.\/public//g' | cut -d "." -f 1)
-    echo "$file" "$slug"
 
     echo "
         <li>
