@@ -11,7 +11,7 @@ create_file() {
     exit 2
   fi
 
-  mkdir -pv "./public/$(dirname "$1")"
+  mkdir -pv "./public/$1"
   cp -nv "./public/.shared/post-template.html" "./public/$1/index.html"
 }
 
@@ -20,16 +20,16 @@ run_update() {
 }
 
 update_file() {
-  eval "$EDITOR" "./public/$1"
+  eval "$EDITOR" "./public/$1/index.html"
 }
 
 edit_file() {
-  eval "$EDITOR" "./public/$1"
+  eval "$EDITOR" "./public/$1/index.html"
 }
 
 finish() {
   read -p "Press enter to push changes"
-  make push
+  #make push
 }
 
 create_file "$@"
