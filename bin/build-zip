@@ -1,0 +1,9 @@
+#!/bin/bash
+
+rm -f ephjos.io
+cp redbean.com ephjos.io
+cd build
+zip -q ../ephjos.io -r *
+chmod +x ../ephjos.io
+echo "Built ephjos.io"
+

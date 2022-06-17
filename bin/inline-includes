@@ -1,0 +1,18 @@
+#!/bin/bash
+
+rm -rf build
+cp -r public build
+cd build
+echo "Created build/"
+
+# TODO: please optimize this
+rg -l "include.*file.*head" | xargs sed -i -e "/^.*include.*file.*head.*$/r ../public/.shared/head.html"
+rg -l "include.*file.*nav" | xargs sed -i -e "/^.*include.*file.*nav.*$/r ../public/.shared/nav.html"
+rg -l "include.*file.*footer" | xargs sed -i -e "/^.*include.*file.*footer.*$/r ../public/.shared/footer.html"
+rg -l "include.*file.*head" | xargs sed -i -e "s/^.*include.*file.*head.*$//g"
+rg -l "include.*file.*nav" | xargs sed -i -e "s/^.*include.*file.*nav.*$//g"
+rg -l "include.*file.*footer" | xargs sed -i -e "s/^.*include.*file.*footer.*$//g"
+echo "Inlined includes"
+
+
+
