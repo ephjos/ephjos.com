@@ -1,0 +1,7 @@
+#!/bin/bash
+
+rsync -av ephjos.io ephjos.io:~/
+ssh ephjos.io '\
+  [ -f "/var/run/ephjos.io.pid" ] && kill -TERM $(cat /var/run/ephjos.io.pid);\
+  ./ephjos.io -c 0 -d -D /var/www/html -L /var/log/ephjos.io.log -P /var/run/ephjos.io.pid\
+  '
