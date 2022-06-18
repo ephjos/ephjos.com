@@ -1,0 +1,7 @@
+#!/bin/bash
+
+./bin/build-index &
+./bin/build-rss&
+wait
+./bin/inline-includes
+./bin/build-zip
