@@ -7,7 +7,8 @@ browser-sync start --server --no-open --no-ui --watch --files "../public/**"  &
 cd ..;
 (while inotifywait --exclude .swp -e modify -r . &> /dev/null; do
   clear;
-  ./bin/build
+  ./bin/inline-includes
+  ./bin/build-zip
 done &)
 
 wait;
