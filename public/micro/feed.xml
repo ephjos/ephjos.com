@@ -10,6 +10,17 @@
 
 
       <item>
+        <title>redbean</title>
+        <link>http://ephjos.io/micro/2022/06/18/index</link>
+        <guid>http://ephjos.io/micro/2022/06/18/index</guid>
+        <pubDate>Sat, 18 Jun 2022 12:00:00 -0400</pubDate>
+        <description><![CDATA[
+                <p>           This site now runs on           <a href="https://redbean.dev/">             redbean</a>! I remember first coming across           <a href="https://news.ycombinator.com/item?id=26271117">             a post on HackerNews</a> last year and being fascinated.           With the recent release of version 2, I knew I had to move this           site over.         </p>         <p>           For all of the effort I put into keeping the site small and simple,           it always felt weird to deploy it using docker behind nginx. I           initially wanted to use a smaller docker image, but that felt like I           was avoiding the problem. Now, this website is a single           zipfile/executable (on the order of a few MB) that can be run on           Linux, Mac, Windows, FreeBSD, OpenBSD, and NetBSD. To deploy,           I rsync the file to a server and ssh in to restart the server.           The only infrastructure needed on the server side is setting up           some files paths, initializing SSL certs using certbot           from Let's Encrypt, and dropping in a script to use the certs.         </p>         <p>           I'll write up a proper post about my setup and some of the quirks I           ran into a long the way, but it was fairly simple. Most of the           complexity is related to some of the weird choices I've made here           with my setup, not specific to redbean.         </p>         <p>           I'd love to spend some time to wrap my head around           <a href="https://github.com/jart/cosmopolitan">             Cosmopolitan Libc</a> and create some           <a href="https://justine.lol/ape.html">             Actually Portable Executables</a> of my own.         </p> 
+        ]]></description>
+      </item>
+    
+
+      <item>
         <title>limits</title>
         <link>http://ephjos.io/micro/2022/06/09/index</link>
         <guid>http://ephjos.io/micro/2022/06/09/index</guid>

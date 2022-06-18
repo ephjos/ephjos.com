@@ -1,19 +1,13 @@
 #!/bin/bash
 
 
-core() {
-  if [ -f ".watchpid" ]; then
-    kill -9 "$(cat .watchpid)";
-  fi
+cd build;
+browser-sync start --server --no-open --no-ui --watch --files "../public/**"  &
 
-  ./bin/build;
-  bash ephjos.io -c 0 &
-  echo "$!" > .watchpid;
-}
-
-core;
-while inotifywait --exclude .swp -e modify -r . &> /dev/null; do
+cd ..;
+(while inotifywait --exclude .swp -e modify -r . &> /dev/null; do
   clear;
-  core;
-done;
+  ./bin/build
+done &)
 
+wait;
