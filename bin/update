@@ -1,7 +1,0 @@
-#!/bin/bash
-
-./bin/update-index &
-./bin/update-rss &
-wait
-./bin/inline-includes
-./bin/build-zip
