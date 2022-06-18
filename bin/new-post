@@ -14,9 +14,7 @@ create_file() {
   mkdir -pv "./public/$1"
   cp -nv "./public/.shared/post-template.html" "./public/$1/index.html"
   eval "$EDITOR" "./public/$1/index.html"
-  ./bin/build-index &
-  ./bin/build-rss &
-  wait;
+  ./bin/build
   eval "$EDITOR" "./public/$1/index.html"
 }
 
