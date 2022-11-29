@@ -1,6 +1,6 @@
 #!/bin/bash
 
-rm -f ephjos.io
+rm -vf ephjos.io
 cp redbean.com ephjos.io
 cd build
 zip -q ../ephjos.io -r *
