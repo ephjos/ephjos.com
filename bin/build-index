@@ -9,51 +9,49 @@ index_tail='
 </html>
 '
 
-for blog in "blog" "micro"; do
-  target="./public/$blog/index.html"
+target="./public/posts/index.html"
 
-  files=$(find ./public/$blog/*/* -name "index.html" | sort -r);
+files=$(find ./public/posts/*/* -name "index.html" | sort -r);
 
-  echo "
+echo "
 <!DOCTYPE html>
 <html lang=\"en\">
 
-  <head>
-    <!--#include file=\"/.shared/head.html\" -->
-    <title>$blog - ephjos</title>
-  </head>
+<head>
+<!--#include file=\"/.shared/head.html\" -->
+<title>posts - ephjos</title>
+</head>
 
-  <body>
-    <!--#include file=\"/.shared/nav.html\" -->
-    <main>
-      <h1>$blog</h1>
-      <ul class=\"posts\">
-  " > "$target";
+<body>
+<!--#include file=\"/.shared/nav.html\" -->
+<main>
+<h1>posts</h1>
+<ul class=\"posts\">
+" > "$target";
 
-  for file in $files; do
-    header=$(cat "$file" \
-      | awk '/<main>/,/<section>/' \
-      | awk 'NR>2 {print last} {last=$0}');
-    input_date=$(echo "$header" | head -n 1 | sed -e 's/\s*<span>\(.*\)<\/span>/\1/');
-    title=$(echo "$header" | tail -n 1 | sed -e 's/\s*<h2>\(.*\)<\/h2>/\1/');
-    content=$(cat "$file" \
-      | awk '/<section>/,/<\/section>/' \
-      | awk 'NR>2 {print last} {last=$0}' \
-      | tr '\n' ' ');
-    slug=$(dirname "$file" | sed -e 's/\.\/public//g' | cut -d "." -f 1)
+for file in $files; do
+  header=$(cat "$file" \
+    | awk '/<main>/,/<section>/' \
+    | awk 'NR>2 {print last} {last=$0}');
+      input_date=$(echo "$header" | head -n 1 | sed -e 's/\s*<span>\(.*\)<\/span>/\1/');
+      title=$(echo "$header" | tail -n 1 | sed -e 's/\s*<h2>\(.*\)<\/h2>/\1/');
+      content=$(cat "$file" \
+        | awk '/<section>/,/<\/section>/' \
+        | awk 'NR>2 {print last} {last=$0}' \
+        | tr '\n' ' ');
+              slug=$(dirname "$file" | sed -e 's/\.\/public//g' | cut -d "." -f 1)
 
-    echo "
-        <li>
-          <b>
-          $input_date
-            <a href=\"$slug\">
-            $title
-            </a>
-          </b>
-        </li>
-      " >> "$target";
-  done
+              echo "
+              <li>
+              <b>
+              $input_date
+              <a href=\"$slug\">
+              $title
+              </a>
+              </b>
+              </li>
+              " >> "$target";
+            done
 
-  echo "$index_tail" >> "$target";
-  echo "Generated $target"
-done
+            echo "$index_tail" >> "$target";
+            echo "Generated $target"

@@ -5,41 +5,39 @@ rss_tail="
 </rss>
 "
 
-for blog in "blog" "micro"; do
-  rss_head="./public/$blog/.shared/rss_head"
-  target="./public/$blog/feed.xml"
+rss_head="./public/posts/.shared/rss_head"
+target="./public/posts/feed.xml"
 
-  files=$(find ./public/$blog/*/* -name "index.html" | sort -r);
+files=$(find ./public/posts/*/* -name "index.html" | sort -r);
 
-  cat "$rss_head" > "$target";
+cat "$rss_head" > "$target";
 
-  for file in $files; do
-    header=$(cat "$file" \
-      | awk '/<main>/,/<section>/' \
-      | awk 'NR>2 {print last} {last=$0}');
-    input_date=$(echo "$header" | head -n 1 | sed -e 's/\s*<span>\(.*\)<\/span>/\1/');
-    pub_date=$(date -R -d "$input_date 12:00");
-    title=$(echo "$header" | tail -n 1 | sed -e 's/\s*<h2>\(.*\)<\/h2>/\1/');
-    content=$(cat "$file" \
-      | awk '/<section>/,/<\/section>/' \
-      | awk 'NR>2 {print last} {last=$0}' \
-      | tr '\n' ' ');
-    slug=$(echo "$file" | sed -e 's/\.\/public//g' | cut -d "." -f 1)
+for file in $files; do
+  header=$(cat "$file" \
+    | awk '/<main>/,/<section>/' \
+    | awk 'NR>2 {print last} {last=$0}');
+  input_date=$(echo "$header" | head -n 1 | sed -e 's/\s*<span>\(.*\)<\/span>/\1/');
+  pub_date=$(date -R -d "$input_date 12:00");
+  title=$(echo "$header" | tail -n 1 | sed -e 's/\s*<h2>\(.*\)<\/h2>/\1/');
+  content=$(cat "$file" \
+    | awk '/<section>/,/<\/section>/' \
+    | awk 'NR>2 {print last} {last=$0}' \
+    | tr '\n' ' ');
+  slug=$(echo "$file" | sed -e 's/\.\/public//g' | cut -d "." -f 1)
 
-    echo "
-      <item>
-        <title>$title</title>
-        <link>http://ephjos.io$slug</link>
-        <guid>http://ephjos.io$slug</guid>
-        <pubDate>$pub_date</pubDate>
-        <description><![CDATA[
-        $content
-        ]]></description>
-      </item>
-    " >> "$target";
+  echo "
+    <item>
+      <title>$title</title>
+      <link>http://ephjos.io$slug</link>
+      <guid>http://ephjos.io$slug</guid>
+      <pubDate>$pub_date</pubDate>
+      <description><![CDATA[
+      $content
+      ]]></description>
+    </item>
+  " >> "$target";
 
-  done
-
-  echo "$rss_tail" >> "$target";
-  echo "Generated $target"
 done
+
+echo "$rss_tail" >> "$target";
+echo "Generated $target"
