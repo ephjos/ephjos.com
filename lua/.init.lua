@@ -12,6 +12,11 @@ if IsDaemon() then
    SetLogLevel(kLogError)
 end
 
+-- https://stackoverflow.com/questions/22831701/lua-read-beginning-of-a-string
+function string.starts(String,Start)
+   return string.sub(String,1,string.len(Start))==Start
+end
+
 function OnServerStart()
     ProgramTokenBucket()
     assert(unix.setrlimit(unix.RLIMIT_NPROC, 1000, 1000))
@@ -21,7 +26,9 @@ function OnHttpRequest()
 
    if GetScheme() == 'http' then
      ServeRedirect(301, GetUrl():gsub("^http://", "https://"))
-   else
+   elseif string.starts(GetPath(), "/micro") or string.starts(GetPath(), "/blog") then
+     ServeRedirect(301, GetUrl():gsub("/blog", "/posts"):gsub("/micro", "/posts"))
+  else
      Route()
    end
 
