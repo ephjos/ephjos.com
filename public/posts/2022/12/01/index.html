@@ -91,7 +91,22 @@
         </div>
         <div>
           <h3>Day 06</h3>
-          <p>Notes go here...</p>
+          <p>
+            At first, I tried to do this a responsible way and track the value
+            of each character, returning early when the marker was found. After
+            a few minutes of issues with this, I went with the obvious
+            approach for me. This was to iterate over the whole input string
+            and check if every window of 4 characters was unique. I
+            did this by constructing a set and checking if the length was still
+            4. While this is likely not the best performance-wise, thanks to the
+            string slice and set construction, it was the easiest to write.
+            And today's part 2 was a simple extension of the problem, growing
+            the window from 4 to 14. Instead of challenging runtime,
+            this tweak challenges how easily adaptable the part 1 code was,
+            which I think is interesting. For me, I copy/pasted the part 1
+            answer and change the 4's to 14's: which was all I needed to do.
+            I enjoyed today's problems!
+          </p>
         </div>
         <div>
           <h3>Day 07</h3>
