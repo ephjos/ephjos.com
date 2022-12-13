@@ -208,7 +208,21 @@
         </div>
         <div>
           <h3>Day 13</h3>
-          <p>Notes go here...</p>
+          <p>
+            Today was fun! I used python's <code>eval</code> to parse the
+            list strings into python lists directly. I was stuck for a while
+            returning bools, when I realized that I needed to write a
+            true <code>cmp</code> style function, returning -1, 0, or 1 instead.
+            This lead perfectly into part 2, where we had to use such a
+            comparison function to sort all of the packets. I was concerned
+            for a moment, but then I found
+            <a href="https://docs.python.org/3/library/functools.html#functools.cmp_to_key">functools.cmp_to_key</a>,
+            which allows you to pass a <code>cmp</code> style function
+            to the <code>key</code> argument of <code>sorted</code>. This
+            made everything straightforward and I got my part 2
+            answer without issue. Taking a few more minutes to wake up
+            before starting this morning was a good decision.
+          </p>
         </div>
         <div>
           <h3>Day 14</h3>
