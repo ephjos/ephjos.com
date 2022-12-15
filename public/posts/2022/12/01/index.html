@@ -240,7 +240,21 @@
         </div>
         <div>
           <h3>Day 15</h3>
-          <p>Notes go here...</p>
+          <p>
+            Today was fun. I figured we would have scaling issues, given the
+            size of the input numbers. Part 1 was fairly straightforward,
+            the only hangup being what bounds to use when checking the row.
+            Part 2 was hard, but it was fun. I realized that the solution must
+            be 1 step off of the border of one of the coverage regions. So I
+            took the most naive approach which was to add all of these
+            eligible values just off the borders and check each one.
+            The solution is slow, but it takes ~1 minute on my machine,
+            which I am happy with. Outside of SAT solvers and other hyper
+            aggressive solutions, I'm sure there is much performance to
+            be gained with my approach as it wastes a bunch of work. Instead
+            of using an intermediary set, I could check points as I go for
+            example. I enjoyed this problem!
+          </p>
         </div>
         <div>
           <h3>Day 16</h3>
