@@ -1,0 +1,14 @@
+#!/bin/bash
+
+# In order to update both certs, certbot uses ports 80 and 443.
+# This script kills the running redbean server, runs the renewal,
+# kills the nginx processes started by certbot, and redeploys the server.
+ssh ephjos.io '\
+  [ -f "/var/run/ephjos.io.pid" ] && kill -TERM $(cat /var/run/ephjos.io.pid); \
+  certbot certonly --nginx --key-type ecdsa \
+    --cert-name ephjos-ecdsa -d ephjos.io -d www.ephjos.io; \
+  certbot certonly --nginx --key-type rsa \
+    --cert-name ephjos-rsa -d ephjos.io -d www.ephjos.io; \
+  killall nginx; \
+  '
+./bin/build && ./bin/deploy
