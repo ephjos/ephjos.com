@@ -6,7 +6,7 @@ cd build
 echo "Created build/"
 
 # TODO: please optimize this
-rg -l "include.*file.*(head|nav|footer)" | xargs sed -i \
+rg -l "include.*file.*(head|nav|footer)" . | xargs sed -i \
   -e "/^.*include.*file.*head.*$/r ../public/.shared/head.html" \
   -e '/^.*include.*file.*head.*$/d' \
   -e "/^.*include.*file.*nav.*$/r ../public/.shared/nav.html" \

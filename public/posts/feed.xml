@@ -10,6 +10,17 @@
 
 
     <item>
+      <title>image2gol</title>
+      <link>http://ephjos.io/posts/2023/04/15/index</link>
+      <guid>http://ephjos.io/posts/2023/04/15/index</guid>
+      <pubDate>Sat, 15 Apr 2023 12:00:00 -0400</pubDate>
+      <description><![CDATA[
+              <p>           Click the file input and choose an image. This image will be used as           the input for running Conway's Game of Life. This is all done on           the client with JavaScript.         </p>         <input type="file" id="imageInput" name="imageInput"/>         <canvas id="imageCanvas"></canvas>         <p>           This is a small idea I have had for a while, finally got around to           throwing something together. Every few months I end up thinking about           Conway's Game of Life again and want to implement it. It's cliche           at this point, but I am continuously fascinated by the complexity           that can emerge from such simple constraints.         </p>         <p>           As-is, this performs a small animation iterating to progressively           more constrained black and white versions of the input image, until it           is reduced to 2 colors (black and white). Then, the Game of Life is           started using that monochrome image (white is considered Alive).           This implementation has fixed size, but allows wrapping around           at the borders.         </p>         <p>           This approach is not the most interesting, and I imagine the input           could be better preprocessed to enable more interesting results.           One could apply some edge detection, blurring, or other scrambling           to potentially introduce more initial noise.         </p> 
+      ]]></description>
+    </item>
+  
+
+    <item>
       <title>Advent of Code 2022</title>
       <link>http://ephjos.io/posts/2022/12/01/index</link>
       <guid>http://ephjos.io/posts/2022/12/01/index</guid>

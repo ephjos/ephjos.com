@@ -7,7 +7,7 @@ create_file() {
   fi
 
   if [[ $1 =~ \.html$ ]]; then
-    echo "File does has an .html extension"
+    echo "File has an .html extension"
     exit 2
   fi
 
