@@ -1,8 +1,5 @@
 #!/bin/bash
 
-# NOTE(ephjos): This shouldn't be needed
-sleep 1
-
 rm -vf ephjos.io
 cp redbean.com ephjos.io
 cd build

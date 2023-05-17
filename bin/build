@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# Ensure a watch is not running
+touch .watchpid
+pkill -P "$(cat .watchpid)" 2>/dev/null 1>/dev/null
+
 ./bin/build-index &
 ./bin/build-rss &
 wait
