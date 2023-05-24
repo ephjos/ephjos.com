@@ -10,6 +10,17 @@
 
 
     <item>
+      <title>image2gol v2</title>
+      <link>http://ephjos.io/posts/2023/05/23/index</link>
+      <guid>http://ephjos.io/posts/2023/05/23/index</guid>
+      <pubDate>Tue, 23 May 2023 12:00:00 -0400</pubDate>
+      <description><![CDATA[
+              <p>           Click the file input and choose an image. This image will be used as           the input for running Conway's Game of Life. This is all done on           the client with JavaScript.         </p>         <input type="file" id="imageInput" name="imageInput"/>         <canvas id="imageCanvas"></canvas>         <p>           This is an update approach to the previous post that modifies the            pre-processing step. This version uses            <a href="https://en.wikipedia.org/wiki/Ordered_dithering">             Bayer Dithering</a> to produce a dithered monochrome image. The           implementation is based on            <a href="https://www.shadertoy.com/view/7sfXDn">             this Shadertoy example of Ordered Dithering</a>.         </p>         <p>           I came across the great            <a href="https://surma.dev/things/ditherpunk/">             Ditherpunk</a> post again today, and had to try my hand at            a brief implementation. The pre-processed images now contain much            more detail, and the resulting Game of Life is different.         </p> 
+      ]]></description>
+    </item>
+  
+
+    <item>
       <title>image2gol</title>
       <link>http://ephjos.io/posts/2023/04/15/index</link>
       <guid>http://ephjos.io/posts/2023/04/15/index</guid>
