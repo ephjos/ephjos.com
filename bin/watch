@@ -2,7 +2,7 @@
 
 echo "$$" > .watchpid
 
-find public/ bin/ lua/ | entr -r -s "./bin/inline-includes && ./bin/build-zip" &
+find public/ bin/ lua/ | entr -r -s "./bin/_build" &
 
 browser-sync start --server build --no-open --no-ui --files "./public/**"
 

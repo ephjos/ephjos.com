@@ -4,8 +4,4 @@
 touch .watchpid
 pkill -P "$(cat .watchpid)" 2>/dev/null 1>/dev/null
 
-./bin/build-index &
-./bin/build-rss &
-wait
-./bin/inline-includes
-./bin/build-zip
+./bin/_build

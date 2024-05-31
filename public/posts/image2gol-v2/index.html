@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <!-- {BEGIN_HEAD} -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name=”robots” content=”NOODP,NOYDIR” />
+    <meta name="theme-color" content="#222222">
+
+    <meta property="og:image" content="/img/logo_card.webp">
+    <meta property="twitter:image" content="/img/logo_card.webp">
+
+    <link rel="stylesheet" href="/index.css">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="icon" type="image/png" href="/favicon.png">
+    <link rel="apple-touch-icon" href="touch-icon-iphone.png">
+    <!-- {END_HEAD} -->
+
+    <style>
+canvas {
+  image-rendering: pixelated;
+  width: 100%;
+  background: black;
+}
+    </style>
+    <script src="./index.js" defer> </script>
+    <title>image2gol - ephjos</title>
+  </head>
+
+  <body>
+    <main>
+      <span>2023/05/23</span>
+      <h2>image2gol v2</h2>
+
+      <section>
+        <p>
+          Click the file input and choose an image. This image will be used as
+          the input for running Conway's Game of Life. This is all done on
+          the client with JavaScript.
+        </p>
+        <input type="file" id="imageInput" name="imageInput"/>
+        <canvas id="imageCanvas"></canvas>
+        <p>
+          This is an update approach to the previous post that modifies the 
+          pre-processing step. This version uses 
+          <a href="https://en.wikipedia.org/wiki/Ordered_dithering">
+            Bayer Dithering</a> to produce a dithered monochrome image. The
+          implementation is based on 
+          <a href="https://www.shadertoy.com/view/7sfXDn">
+            this Shadertoy example of Ordered Dithering</a>.
+        </p>
+        <p>
+          I came across the great 
+          <a href="https://surma.dev/things/ditherpunk/">
+            Ditherpunk</a> post again today, and had to try my hand at 
+          a brief implementation. The pre-processed images now contain much 
+          more detail, and the resulting Game of Life is different.
+        </p>
+      </section>
+    </main>
+  </body>
+</html>
+

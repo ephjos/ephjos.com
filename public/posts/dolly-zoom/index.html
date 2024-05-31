@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <!-- {BEGIN_HEAD} -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name=”robots” content=”NOODP,NOYDIR” />
+    <meta name="theme-color" content="#222222">
+
+    <meta property="og:image" content="/img/logo_card.webp">
+    <meta property="twitter:image" content="/img/logo_card.webp">
+
+    <link rel="stylesheet" href="/index.css">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="icon" type="image/png" href="/favicon.png">
+    <link rel="apple-touch-icon" href="touch-icon-iphone.png">
+    <!-- {END_HEAD} -->
+
+    <title>dolly zoom</title>
+  </head>
+
+  <body>
+    <main> 
+      <span>2022/04/13</span>
+      <h2>dolly zoom</h2>
+
+      <section>
+        <p>
+          Tinkering more with
+          <a href="https://raytracing.github.io/books/RayTracingInOneWeekend.html">
+            Ray Tracing In One Weekend</a>, I managed to render a dolly zoom.
+          The
+          <a href="https://en.wikipedia.org/wiki/Dolly_zoom">
+            Dolly Zoom Wikipedia page</a> has an equation for calculating
+          distance as a function of FOV, which made this straightforward.
+          I solved the equation for FOV instead, and then rendered a bunch of
+          frames while moving the camera closer to the center ball.
+        </p>
+
+        <video autoplay muted loop controls>
+            <source src="/vid/rtiow_dolly_00.mp4" type="video/mp4">
+            Cannot render video in your browser
+        </video>
+      </section>
+    </main>
+  </body>
+</html>
+
