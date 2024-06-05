@@ -133,11 +133,11 @@ function CoreProgram(renderWrapper, displayWrapper) {
     gl.texImage2D(
       gl.TEXTURE_2D,
       0,
-      gl.RGB,
+      gl.RGBA,
       gl.canvas.width,
       gl.canvas.height,
       0,
-      gl.RGB,
+      gl.RGBA,
       type,
       null
     );
