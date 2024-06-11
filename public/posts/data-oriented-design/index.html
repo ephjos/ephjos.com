@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <!-- {BEGIN_HEAD} -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name=”robots” content=”NOODP,NOYDIR” />
+    <meta name="theme-color" content="#222222">
+
+    <meta property="og:image" content="/img/logo_card.webp">
+    <meta property="twitter:image" content="/img/logo_card.webp">
+
+    <link rel="stylesheet" href="/index.css">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="icon" type="image/png" href="/favicon.png">
+    <link rel="apple-touch-icon" href="/touch-icon-iphone.png">
+    <!-- {END_HEAD} -->
+
+    <title>data oriented design</title>
+  </head>
+
+  <body>
+    <a href="/">home</a>
+    <main>
+      <h2>
+        Background
+      </h2>
+
+      <p>
+        I've been learning some 
+        <a href="https://ziglang.org/"
+          >Zig</a>
+        in my free time, which sent me down the Data Oriented Design rabbithole.
+        While I had heard the term before, I didn't have a complete 
+        understanding of what it was. That was until I stumbled onto
+        <a href="https://www.youtube.com/watch?v=rX0ItVEVjHc"
+          >Mike Acton's CppCon talk</a>. 
+      </p>
+
+      <p>
+        Much has been said about this talk, and I find myself agreeing with
+        most of the praise. However, I still think that the examples
+        given are more complex than they need to be to drive home
+        some of the key points. So, I tried to come up with the smallest
+        example I could.
+      </p>
+
+      <h2>
+        Example
+      </h2>
+
+      <p>
+        Say we have a collection of some "nodes" which we want to find the
+        average value of based on some condition. The most straightforward
+        implementation may look like:
+      </p>
+
+      <pre>
+        <code>
+// one.c
+#include &lt;stdio.h&gt;
+#include &lt;stdbool.h&gt;
+
+struct node {
+  int value;
+  bool include;
+};
+
+#define NUM_NODES 8
+const struct node nodes[NUM_NODES] = {
+  { 661255741, 0 },
+  { 858440027, 1 },
+  { 2015743814, 1 },
+  { -614169128, 0 },
+  { 726937019, 1 },
+  { -1228229102, 1 },
+  { -2135130442, 1 },
+  { -348350879, 1 },
+};
+
+int main() {
+  int sum = 0;
+  int count = 0;
+
+  for (int i = 0; i < NUM_NODES; i++) {
+    struct node curr = nodes[i];
+    if (curr.include) {
+      sum += curr.value;
+      count++;
+    }
+  }
+
+  printf("%d nodes counted with average: %f\n", 
+    count, (double)sum/(double)count);
+}
+        </code>
+      </pre>
+
+      <p>
+        There are two main drawbacks to this approach, both related to the
+        <code>include</code> field on the struct.
+
+        <ul>
+          <li>
+            Keeping everthing in the same array and then iterating over it
+            creates a lot of wasted work. For any nodes with <code>include ==
+            0</code>, we waste several instructions and a loop iteration to do
+          nothing of value.
+          </li>
+          <li>
+            The bool being present in the struct leads to the struct wasting
+            space. In this case, the int causes this struct to be aligned on
+            32-bit (4 byte) boundaries but the bool only needs one byte (only
+            one bit of information). This results in 3 bytes of padding to get
+            to a size of 8, which aligns on the 4 byte boundary. These last 3
+            bytes carry no information and lead to increased cache misses as we
+            will be loading 8 bytes and only using the first 5.
+          </li>
+        </ul>
+      </p>
+
+      <p>
+        The data oriented approach would be to solve for the common case and
+        maximize our use of the cache.
+      </p>
+
+      <pre>
+      <code>
+// two.c
+#include &lt;stdio.h&gt;
+#include &lt;stdbool.h&gt;
+
+struct node {
+  int value;
+};
+
+#define NUM_INCLUDED_NODES 6
+const struct node included_nodes[NUM_INCLUDED_NODES] = {
+  { 858440027 },
+  { 2015743814 },
+  { 726937019 },
+  { -1228229102 },
+  { -2135130442 },
+  { -348350879 },
+};
+
+#define NUM_EXCLUDED_NODES 2
+const struct node excluded_nodes[NUM_EXCLUDED_NODES] = {
+  { 661255741 },
+  { -614169128 },
+};
+
+int main() {
+  int sum = 0;
+
+  for (int i = 0; i < NUM_INCLUDED_NODES; i++) {
+    sum += included_nodes[i].value;
+  }
+
+  printf("%d nodes counted with average: %f\n", 
+    NUM_INCLUDED_NODES, 
+    (double)sum/(double)NUM_INCLUDED_NODES);
+}
+      </code>
+      </pre>
+
+      <p>
+        Here, we remove the bool from the struct and encode that bit of
+        information by instead grouping the nodes into separate arrays based on
+        whether or not they are included. Our "common case" is iterating over
+        and adding included nodes. This solution allows us to iterate directly
+        over them without needing a conditional check. Avoiding this check
+        combined with avoiding struct padding makes much better use of the
+        cache.
+      </p>
+
+      <h2>
+        Benchmarks
+      </h2>
+
+      <p>
+        <ul>
+          <li>
+            Using 1,048,576 nodes
+          </li>
+          <li>
+            Values chosen randomly from MIN_INT to MAX_INT
+          </li>
+          <li>
+            1024 runs for each perf invocation
+          </li>
+          <li>
+            Verified identical output
+          </li>
+        </ul>
+      </p>
+
+      <h3>
+        Results
+      </h3>
+
+      <p>
+        For unoptimized builds, the naive approach results in a ~60% cache miss
+        rate. Combined with the additional instructions required and the
+        increased number of loop iterations, this is the slowest of the runs.
+        The data oriented approach reduces the cache miss rate to ~27%, while
+        running 1/3 of the instructions. This leads to a >2x wall time
+        improvement.
+      </p>
+      
+      <p>
+        For optimized builds, the naive approach has a slightly better cache
+        miss rate at ~53%. The compiler also was able to do some work, halving
+        the amount of cycles and instructions needed. The data oriented
+        approach drops down to a ~15% cache miss rate while also drastically
+        reducing the amount of instructions and cycles by around an order of
+        magnitude each. 
+      </p>
+
+      <p>
+        This is possible due to the compiler auto-vectorizing and using
+        <code>paddd</code> with <code>xmm0</code> instead of <code>addl</code>
+        with normal registers. It also unrolls the loop twice. This means that
+        the naive approach does one addition per loop, whereas the data
+        oriented approach does 8 additions per loop (in only 3 instructions).
+        This was possible due to the simplication introduced by the data
+        oriented approach.
+      </p>
+
+      <p>
+        Full perf output below
+      </p>
+
+      <h3>
+        Debug (-g -O0)
+      </h3>
+
+      <p>
+        <pre>
+        <code>
+ Performance counter stats for 'one_debug' (1024 runs):
+
+           294,051      cache-references:u                                                      ( +-  0.02% )
+           173,755      cache-misses:u                   #   59.09% of all cache refs           ( +-  0.48% )
+        29,445,380      cycles:u                                                                ( +-  0.02% )
+        14,320,751      instructions:u                   #    0.49  insn per cycle              ( +-  0.00% )
+         2,135,613      branches:u                                                              ( +-  0.00% )
+               189      faults:u                                                                ( +-  0.02% )
+                 0      migrations:u                                                          
+
+         0.0087163 +- 0.0000542 seconds time elapsed  ( +-  0.62% )
+
+
+ Performance counter stats for 'two_debug' (1024 runs):
+
+            85,982      cache-references:u                                                      ( +-  0.04% )
+            23,817      cache-misses:u                   #   27.70% of all cache refs           ( +-  2.25% )
+         3,932,744      cycles:u                                                                ( +-  0.03% )
+         4,883,161      instructions:u                   #    1.24  insn per cycle              ( +-  0.00% )
+           562,601      branches:u                                                              ( +-  0.00% )
+                94      faults:u                                                                ( +-  0.04% )
+                 0      migrations:u                                                          
+
+         0.0038912 +- 0.0000820 seconds time elapsed  ( +-  2.11% )
+        </code>
+        </pre>
+      </p>
+
+      <h3>
+        Release (-O3)
+      </h3>
+
+      <p>
+        <pre>
+        <code>
+ Performance counter stats for 'one_release' (1024 runs):
+
+           299,789      cache-references:u                                                      ( +-  0.02% )
+           161,372      cache-misses:u                   #   53.83% of all cache refs           ( +-  0.44% )
+        15,365,240      cycles:u                                                                ( +-  0.03% )
+         6,456,473      instructions:u                   #    0.42  insn per cycle              ( +-  0.00% )
+         2,135,610      branches:u                                                              ( +-  0.00% )
+               190      faults:u                                                                ( +-  0.02% )
+                 0      migrations:u                                                          
+
+         0.0064188 +- 0.0000569 seconds time elapsed  ( +-  0.89% )
+
+
+ Performance counter stats for 'two_release' (1024 runs):
+
+            71,807      cache-references:u                                                      ( +-  0.11% )
+            11,414      cache-misses:u                   #   15.90% of all cache refs           ( +-  2.59% )
+           534,521      cycles:u                                                                ( +-  0.56% )
+           492,674      instructions:u                   #    0.92  insn per cycle              ( +-  0.00% )
+           103,891      branches:u                                                              ( +-  0.00% )
+                94      faults:u                                                                ( +-  0.04% )
+                 0      migrations:u                                                          
+
+         0.0014308 +- 0.0000312 seconds time elapsed  ( +-  2.18% )
+        </code>
+        </pre>
+      </p>
+
+      <h2>
+        Summary
+      </h2>
+
+      <p>
+        Even for a painfully simple example, data oriented design shows how
+        much can be gained when we are conscious of the platform we are running
+        on and shape our data for our common case. In this basic example, we
+        gained more than an order of magnitude of wall-time performance.
+      </p>
+
+    </main>
+  </body>
+</html>
+

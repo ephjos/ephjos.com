@@ -1,0 +1,8 @@
+a.out
+*_debug
+*_release
+*_data
+*.s
+*.lst
+__pycache__
+

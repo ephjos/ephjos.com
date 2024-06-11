@@ -7,9 +7,11 @@ echo "Created build/"
 rm -vf ephjos.io
 cp redbean.com ephjos.io
 cd build
-zip ../ephjos.io -r *
+zip ../ephjos.io -r * 
 # Remove compression from videos, this allows range requests to work
 zip ../ephjos.io -0 -r $(find vid -type f) 
+# Remove _private directories
+zip ../ephjos.io -d "*_private*"
 chmod +x ../ephjos.io
 echo "Built ephjos.io"
 
