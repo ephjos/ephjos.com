@@ -21,6 +21,9 @@
 #p5-container {
   width: 100%;
 }
+#fps-container {
+  color: var(--gray);
+}
     </style>
     <script src="/files/p5.min.js" defer></script>
     <script src="./index.js" defer></script>
@@ -30,15 +33,14 @@
   <body>
     <a href="/">home</a>
     <main>
-      <span>2024/10/26</span>
-      <h2>boids</h2>
+      <span>2024/10/31</span>
+      <h2>3D boids</h2>
       <p>
-        I realized that other day that I had never implemented boids. The
-        graphics classes I took in college frequently brought them up, but we
-        never actually worked with them. So here, a simple CPU boid simulation
-        using 
-        <a href="https://p5js.org/">p5.js</a>.
+        An extension from the last post: 3D boids! Still using
+        <a href="https://p5js.org/">p5.js</a>, all calculations on CPU.
+        Click/Drag/Zoom the cube below.
       </p>
+      <div id="fps-container"></div>
       <div id="p5-container"></div>
     </main>
   </body>
