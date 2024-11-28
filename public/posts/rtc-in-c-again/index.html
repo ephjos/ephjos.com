@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <!-- {BEGIN_HEAD} -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name=”robots” content=”NOODP,NOYDIR” />
+    <meta name="theme-color" content="#222222">
+
+    <meta property="og:image" content="/img/logo_card.webp">
+    <meta property="twitter:image" content="/img/logo_card.webp">
+
+    <link rel="stylesheet" href="/index.css">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="icon" type="image/png" href="/favicon.png">
+    <link rel="apple-touch-icon" href="/touch-icon-iphone.png">
+    <!-- {END_HEAD} -->
+
+    <title></title>
+  </head>
+
+  <body>
+    <a href="/">home</a>
+    <main>
+      <span>2024/11/28</span>
+      <h2>rtc c again</h2>
+      <p>
+        It's been a while and I had the time, so I decided to implement the Ray
+        Tracer Challenge again. I decided to restart with C and finish (render
+        the cover image) from scratch. Some of what I've learned in the
+        Performance Aware Programming course came in handy and this is by far
+        my fastest implementation of this ray tracer so far. I didn't put much
+        explicit effort into performance, instead I just tried to avoid wasting
+        CPU time and things worked out pretty well.
+      </p>
+      <video autoplay muted loop controls>
+        <source src="/vid/rtc-in-c-again.mp4" type="video/mp4">
+        Cannot render video in your browser
+      </video>
+      <p>
+        I rendered a bunch of frames of the cover image and stitched them
+        together into the video above. In the optimized build, each 1000x1000
+        frame took around 5.5s with a 5 bounce depth. This is roughly 20,000
+        cycles per pixel (thanks RDTSC). It is amazing how fast software can be
+        if keep your code simple and stay focused on transforming your data.
+      </p>
+    </main>
+  </body>
+</html>
+
