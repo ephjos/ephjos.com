@@ -2,27 +2,21 @@
 <html lang="en">
 
   <head>
-    <!-- {BEGIN_HEAD} -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name=”robots” content=”NOODP,NOYDIR” />
-    <meta name="theme-color" content="#222222">
-
-    <meta property="og:image" content="/img/logo_card.webp">
-    <meta property="twitter:image" content="/img/logo_card.webp">
-
-    <link rel="stylesheet" href="/index.css">
-    <link rel="shortcut icon" href="/favicon.ico">
-    <link rel="icon" type="image/png" href="/favicon.png">
-    <link rel="apple-touch-icon" href="/touch-icon-iphone.png">
-    <!-- {END_HEAD} -->
+    {{HEAD}}
 
     <title>data oriented design</title>
   </head>
 
   <body>
-    <a href="/">home</a>
+    {{NAV}}
     <main>
+      <table>
+        <tr>
+          <td class="shrink">2024/06/11</td>
+          <td>data oriented design</td>
+        </tr>
+      </table>
+
       <h2>
         Background
       </h2>
@@ -57,7 +51,6 @@
       </p>
 
       <pre>
-        <code>
 // one.c
 #include &lt;stdio.h&gt;
 #include &lt;stdbool.h&gt;
@@ -94,7 +87,6 @@ int main() {
   printf("%d nodes counted with average: %f\n", 
     count, (double)sum/(double)count);
 }
-        </code>
       </pre>
 
       <p>
@@ -126,7 +118,6 @@ int main() {
       </p>
 
       <pre>
-      <code>
 // two.c
 #include &lt;stdio.h&gt;
 #include &lt;stdbool.h&gt;
@@ -162,7 +153,6 @@ int main() {
     NUM_INCLUDED_NODES, 
     (double)sum/(double)NUM_INCLUDED_NODES);
 }
-      </code>
       </pre>
 
       <p>
@@ -238,7 +228,6 @@ int main() {
 
       <p>
         <pre>
-        <code>
  Performance counter stats for 'one_debug' (1024 runs):
 
            294,051      cache-references:u                                                      ( +-  0.02% )
@@ -263,7 +252,6 @@ int main() {
                  0      migrations:u                                                          
 
          0.0038912 +- 0.0000820 seconds time elapsed  ( +-  2.11% )
-        </code>
         </pre>
       </p>
 
@@ -273,7 +261,6 @@ int main() {
 
       <p>
         <pre>
-        <code>
  Performance counter stats for 'one_release' (1024 runs):
 
            299,789      cache-references:u                                                      ( +-  0.02% )
@@ -298,7 +285,6 @@ int main() {
                  0      migrations:u                                                          
 
          0.0014308 +- 0.0000312 seconds time elapsed  ( +-  2.18% )
-        </code>
         </pre>
       </p>
 
@@ -315,5 +301,6 @@ int main() {
 
     </main>
   </body>
+  {{END}}
 </html>
 

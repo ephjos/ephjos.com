@@ -2,11 +2,6 @@ const CONTAINER = document.querySelector("#p5-container");
 const FPS_CONTAINER = document.querySelector("#fps-container");
 let WIDTH = CONTAINER.offsetWidth;
 
-const GRAY = "#222";
-const PINK = "#f64c72";
-const CYAN = "#66fcf1";
-const WHITE = "#fafafa";
-
 const SIZE = 8;
 const TAIL_SIZE = 10;
 
@@ -31,10 +26,12 @@ const QF = ((180-TAIL_SIZE) * (3.141592/180));
 const RF = ((180+TAIL_SIZE) * (3.141592/180));
 
 let count = 64;
-let positions = [];
-let velocities = [];
+let positions;
+let velocities;
 
-let colors = [];
+let colors;
+let foregroundColor;
+let backgroundColor;
 
 function windowResized() {
   WIDTH = CONTAINER.offsetWidth;
@@ -42,17 +39,27 @@ function windowResized() {
 }
 
 function setup() {
+  const documentStyle = window.getComputedStyle(document.body)
+  const from_color = documentStyle.getPropertyValue('--lighest-ivy');
+  const to_color = documentStyle.getPropertyValue('--darkest-ivy');
+  foregroundColor = documentStyle.getPropertyValue('--text-muted');
+  backgroundColor = documentStyle.getPropertyValue('--bg');
+
   const canvas = createCanvas(WIDTH, WIDTH, WEBGL);
   canvas.parent('p5-container');
 
   camera(WIDTH, -WIDTH, WIDTH);
   perspective(1);
 
-  const from = color(PINK);
-  const to = color(CYAN);
+  const from = color(from_color);
+  const to = color(to_color);
   let amount = 0;
   let step = 1/count;
 
+  positions = [];
+  velocities = [];
+
+  colors = [];
 
   for (let i = 0; i < count; i++) {
     positions.push(createVector(random(-WIDTH, WIDTH), random(-WIDTH, WIDTH), random(-WIDTH, WIDTH)));
@@ -63,6 +70,10 @@ function setup() {
     amount += step;
   }
 }
+
+document.querySelector("#colorscheme-button").addEventListener("click", () => {
+  setup();
+});
 
 function drawBoid(p, v) {
   // p5.js aligns cones vertically by default, use y axis here
@@ -78,7 +89,8 @@ function drawBoid(p, v) {
 }
 
 function drawBoids() {
-  noStroke();
+  fill(foregroundColor);
+  stroke(foregroundColor);
   beginGeometry();
   for (let i = 0; i < count; i++) {
     push();
@@ -94,7 +106,7 @@ function drawBoids() {
 
 function drawBox() {
   noFill();
-  stroke(WHITE);
+  stroke(foregroundColor);
   beginGeometry();
   box(WIDTH-MARGIN, WIDTH-MARGIN, WIDTH-MARGIN);
   const shape = endGeometry();
@@ -191,13 +203,11 @@ function drawFPS() {
     fps_count = 0;
   }
 
-  fill(WHITE);
-  stroke(WHITE);
   FPS_CONTAINER.innerText = `${Math.floor(fps)} fps`
 }
 
 function draw() {
-  background(GRAY);
+  background(backgroundColor);
 
   orbitControl();
 

@@ -2,20 +2,7 @@
 <html lang="en">
 
   <head>
-    <!-- {BEGIN_HEAD} -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name=”robots” content=”NOODP,NOYDIR” />
-    <meta name="theme-color" content="#222222">
-
-    <meta property="og:image" content="/img/logo_card.webp">
-    <meta property="twitter:image" content="/img/logo_card.webp">
-
-    <link rel="stylesheet" href="/index.css">
-    <link rel="shortcut icon" href="/favicon.ico">
-    <link rel="icon" type="image/png" href="/favicon.png">
-    <link rel="apple-touch-icon" href="/touch-icon-iphone.png">
-    <!-- {END_HEAD} -->
+    {{HEAD}}
 
     <style>
 #p5-container {
@@ -28,10 +15,14 @@
   </head>
 
   <body>
-    <a href="/">home</a>
+    {{NAV}}
     <main>
-      <span>2024/10/26</span>
-      <h2>boids</h2>
+      <table>
+        <tr>
+          <td class="shrink">2024/10/26</td>
+          <td>boids</td>
+        </tr>
+      </table>
       <p>
         I realized that other day that I had never implemented boids. The
         graphics classes I took in college frequently brought them up, but we
@@ -39,8 +30,10 @@
         using 
         <a href="https://p5js.org/">p5.js</a>.
       </p>
+      <div id="fps-container"></div>
       <div id="p5-container"></div>
     </main>
   </body>
+  {{END}}
 </html>
 

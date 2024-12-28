@@ -2,20 +2,7 @@
 <html lang="en">
 
   <head>
-    <!-- {BEGIN_HEAD} -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name=”robots” content=”NOODP,NOYDIR” />
-    <meta name="theme-color" content="#222222">
-
-    <meta property="og:image" content="/img/logo_card.webp">
-    <meta property="twitter:image" content="/img/logo_card.webp">
-
-    <link rel="stylesheet" href="/index.css">
-    <link rel="shortcut icon" href="/favicon.ico">
-    <link rel="icon" type="image/png" href="/favicon.png">
-    <link rel="apple-touch-icon" href="/touch-icon-iphone.png">
-    <!-- {END_HEAD} -->
+    {{HEAD}}
 
     <style>
 canvas {
@@ -25,14 +12,18 @@ canvas {
 }
     </style>
     <script src="./index.js" defer> </script>
-    <title>image2gol - ephjos</title>
+    <title>image2gol</title>
   </head>
 
   <body>
-    <a href="/">home</a>
+    {{NAV}}
     <main>
-      <span>2023/04/15</span>
-      <h2>image2gol</h2>
+      <table>
+        <tr>
+          <td class="shrink">2023/04/15</td>
+          <td>image2gol</td>
+        </tr>
+      </table>
 
       <section>
         <p>
@@ -67,5 +58,6 @@ canvas {
     </main>
 
   </body>
+  {{END}}
 </html>
 

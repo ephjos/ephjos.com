@@ -1,25 +1,48 @@
+@font-face {
+    font-family: 'TX-02-Regular';
+    src: url('TX-02-Regular.woff2')  format('woff2');
+}
+
 * {
   margin: 0;
   padding: 0;
   border: none;
   box-sizing: border-box;
+  font-family: "TX-02-Regular", monospace;
 }
 
 html {
   /*
-   * Variable declarations, available everywhere on the page
+   * Colors
    */
-  --bg: #222;
-  --bg-light: #333;
-  --gray: #c5c6c7;
-  --cyan: #66fcf1;
-  --pink: #f64c72;
-  --text: #fafafa;
-  --text-muted: #c0c0c0;
-  --link-blue: #6495ED;
+  --lightest-ivy: #f0f3f1;
+  --light-ivy: #e1e8e2;
+  --off-ivy: #6b8970;
+  --ivy: #4b604e;
+  --dark-ivy: #2b3a2d;
+  --darkest-ivy: #121813;
 
-  font-size: 16px;
-  font-family: sans-serif;
+  --white: #fff;
+  --off-white: #ccc;
+  --gray: #666;
+  --black: #000;
+  --link-blue: #0000EE;
+  --link-purple: #551A8B;
+
+  /*
+   * Theme
+   */
+
+  --bg: var(--lightest-ivy);
+  --bg-alt: var(--light-ivy);
+  --text: var(--black);
+  --text-alt: var(--ivy);
+  --text-muted: var(--gray);
+
+  /*
+   * Document styles
+   */
+  font-size: 12pt;
 
   line-height: 1.5;
 
@@ -34,100 +57,105 @@ html {
   -webkit-text-size-adjust: 100%;
 }
 
-nav a + a,
-footer a + a {
-  margin-left: 0.5em;
+.light, .dark {
+  display: none;
+}
+html[data-theme="light"] .light {
+  display: none;
+}
+html[data-theme="light"] .dark {
+  display: block;
+}
+html[data-theme="dark"] .light {
+  display: block;
+}
+html[data-theme="dark"] .dark {
+  display: none;
+}
+
+
+html[data-theme="dark"] {
+    --link-blue: #9292ff;
+    --link-purple: #bc8be9;
+
+    --bg: var(--darkest-ivy);
+    --bg-alt: var(--dark-ivy);
+    --text: var(--off-white);
+    --text-alt: var(--off-ivy);
+    --text-muted: var(--gray);
+}
+
+a {
+  color: var(--link-blue);
+}
+a:visited {
+  color: var(--link-purple);
 }
 
 body {
   background: var(--bg);
   color: var(--text);
 
-  max-width: 60ch;
-  margin: 1em auto 1em auto;
-  padding: 0 0.5rem;
+  max-width: 62ch;
+  margin: 1ch auto 1ch auto;
+  padding: 0 1ch;
   overflow-x: hidden;
+}
+
+nav {
+  display: flex;
+  width: 100%;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  margin-bottom: 2ch;
 }
 
 footer {
   width: 100%;
   text-align: center;
-  padding-bottom: 3em;
+  padding-bottom: 3ch;
 }
 
 p, h1, h2, h3, h4, h5, h6 {
   overflow-wrap: break-word;
 }
 
-a {
-  color: var(--link-blue);
-}
-
 p {
-  margin: 1em 0;
-}
-
-span {
-  color: var(--text-muted);
-}
-
-ul {
-  margin-left: 2rem;
-}
-
-ul.posts {
-  margin: 1em 0;
-  list-style-type: none;
-}
-
-ul.posts li {
-  margin: 0.5em 0;
-  color: var(--text-muted);
-}
-
-ul.posts b {
-  display: flex;
-  align-items: center;
-  font-size: 0.80rem;
-}
-
-ul.posts a {
-  display: block;
-  color: var(--pink);
-  font-size: 1rem;
-  margin-left: 0.5rem;
+  margin: 1ch 0;
 }
 
 h1, h2, h3, h4, h5, h6 {
-  margin: 0.5em 0 0.25em 0;
+  margin: 0.5ch 0 0.25ch 0;
 }
-h1, h3 { color: var(--cyan); }
-h2 { color: var(--pink); }
+h1, h3 { color: var(--text-alt); }
+h2 { color: var(--text-alt); }
 
 pre {
-  padding: 1rem;
-  background-color: var(--bg-light);
+  padding: 1ch;
   overflow: auto;
+  background-color: var(--bg-alt);
+  border: 0.125ch dashed var(--text-muted);
 }
 
 code {
-  background-color: var(--bg-light);
+  background-color: var(--bg-alt);
+  border: 0.125ch dashed var(--text-muted);
 }
 
 blockquote {
   font-family: serif;
-  font-size: 1rem;
+  font-size: 1ch;
   color: var(--text);
   line-height: 125%;
-  margin-left: 1rem;
-  padding-left: 1rem;
-  border-left: 0.5rem solid var(--bg-light);
+  margin-left: 1ch;
+  padding-left: 1ch;
+  border-left: 0.5ch solid var(--bg-alt);
 }
 
 img {
   display: block;
-  margin: 0.5rem 0 0.5rem 0;
-  padding: 0.5rem 0 0.5rem 0;
+  margin: 0.5ch 0 0.5ch 0;
+  padding: 0.5ch 0 0.5ch 0;
   width: 100%;
   height: auto;
 }
@@ -140,9 +168,9 @@ video {
 }
 
 hr {
-  width: 3em;
-  border: 0.25em;
-  border-style: none none solid;
+  width: 100%;
+  border: 0.125ch;
+  border-style: none none dashed;
   color: var(--text);
   margin: 0 auto;
 
@@ -151,4 +179,33 @@ hr {
   -khtml-user-select: none; /* Konqueror HTML */
   -moz-user-select: none; /* Firefox */
   -ms-user-select: none; /* Internet Explorer/Edge */
+}
+
+table {
+  width: 100%;
+}
+
+table, thead, tbody, tr, td, th {
+  border: 0.125ch dashed var(--text-muted);
+  border-collapse: collapse;
+}
+
+th, td {
+  padding: 0.25ch;
+}
+
+button {
+  padding: 0.5em;
+  cursor: pointer;
+  background: var(--text-alt);
+  color: var(--bg);
+  box-shadow: 0.5ch 0.5ch 0ch var(--bg-alt);
+}
+
+ul, ol {
+  margin-left: 2ch;
+}
+
+.shrink {
+  width: 1px;
 }

@@ -4,6 +4,16 @@ rm -rf build
 cp -r public build
 echo "Created build/"
 
+head="$(<stubs/head.html)"
+nav="$(<stubs/nav.html)"
+end="$(<stubs/end.html)"
+
+html_files="$(find build/ -name "*.html")"
+
+sed -e '/{{HEAD}}/ {' -e 'r stubs/head.html' -e 'd' -e '}' -i $html_files
+sed -e '/{{NAV}}/ {' -e 'r stubs/nav.html' -e 'd' -e '}' -i $html_files
+sed -e '/{{END}}/ {' -e 'r stubs/end.html' -e 'd' -e '}' -i $html_files
+
 rm -vf ephjos.io
 cp redbean.com ephjos.io
 cd build

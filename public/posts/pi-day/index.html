@@ -2,20 +2,7 @@
 <html lang="en">
 
   <head>
-    <!-- {BEGIN_HEAD} -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name=”robots” content=”NOODP,NOYDIR” />
-    <meta name="theme-color" content="#222222">
-
-    <meta property="og:image" content="/img/logo_card.webp">
-    <meta property="twitter:image" content="/img/logo_card.webp">
-
-    <link rel="stylesheet" href="/index.css">
-    <link rel="shortcut icon" href="/favicon.ico">
-    <link rel="icon" type="image/png" href="/favicon.png">
-    <link rel="apple-touch-icon" href="/touch-icon-iphone.png">
-    <!-- {END_HEAD} -->
+    {{HEAD}}
 
     <style>
 .container {
@@ -55,22 +42,21 @@ label {
 input {
   width: 100%;
 }
-button {
-  padding: 0.5em;
-  border-radius: 5px;
-  cursor: pointer;
-}
     </style>
     <script src="./gl-matrix-min.js" defer></script>
     <script src="./index.js" defer></script>
-    <title>pi day - ephjos</title>
+    <title>pi day</title>
   </head>
 
   <body>
-    <a href="/">home</a>
+    {{NAV}}
     <main>
-      <span>2022/03/14</span>
-      <h2>pi day</h2>
+      <table>
+        <tr>
+          <td class="shrink">2022/03/14</td>
+          <td>pi day</td>
+        </tr>
+      </table>
 
       <section>
         <p>
@@ -126,5 +112,6 @@ button {
       </section>
     </main>
   </body>
+  {{END}}
 </html>
 

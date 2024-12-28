@@ -6,3 +6,8 @@
 3. Install blackholed
 4. Start blackholed daemon
 5. Run `bin/build && bin/deploy`, pointing `bin/deploy` at the target server
+
+## fonts
+
+now using licensed fonts. gitignored per the license, will require placing file 
+from personal backup into repo to work.

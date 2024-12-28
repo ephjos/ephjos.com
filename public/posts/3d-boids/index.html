@@ -2,27 +2,11 @@
 <html lang="en">
 
   <head>
-    <!-- {BEGIN_HEAD} -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name=”robots” content=”NOODP,NOYDIR” />
-    <meta name="theme-color" content="#222222">
-
-    <meta property="og:image" content="/img/logo_card.webp">
-    <meta property="twitter:image" content="/img/logo_card.webp">
-
-    <link rel="stylesheet" href="/index.css">
-    <link rel="shortcut icon" href="/favicon.ico">
-    <link rel="icon" type="image/png" href="/favicon.png">
-    <link rel="apple-touch-icon" href="/touch-icon-iphone.png">
-    <!-- {END_HEAD} -->
+    {{HEAD}}
 
     <style>
 #p5-container {
   width: 100%;
-}
-#fps-container {
-  color: var(--gray);
 }
     </style>
     <script src="/files/p5.min.js" defer></script>
@@ -31,10 +15,14 @@
   </head>
 
   <body>
-    <a href="/">home</a>
+    {{NAV}}
     <main>
-      <span>2024/10/31</span>
-      <h2>3D boids</h2>
+      <table>
+        <tr>
+          <td class="shrink">2024/10/31</td>
+          <td>3D boids</td>
+        </tr>
+      </table>
       <p>
         An extension from the last post: 3D boids! Still using
         <a href="https://p5js.org/">p5.js</a>, all calculations on CPU.
@@ -44,5 +32,6 @@
       <div id="p5-container"></div>
     </main>
   </body>
+  {{END}}
 </html>
 

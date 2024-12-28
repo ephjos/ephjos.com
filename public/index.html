@@ -2,80 +2,50 @@
 <html lang="en">
 
   <head>
-    <!-- {BEGIN_HEAD} -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="robots" content="NOODP,NOYDIR" />
-    <meta name="theme-color" content="#222222">
-
-    <meta property="og:image" content="/img/logo_card.webp">
-    <meta property="twitter:image" content="/img/logo_card.webp">
-
-    <link rel="stylesheet" href="/index.css">
-    <link rel="shortcut icon" href="/favicon.ico">
-    <link rel="icon" type="image/png" href="/favicon.png">
-    <link rel="apple-touch-icon" href="/touch-icon-iphone.png">
-    <!-- {END_HEAD} -->
-
+    {{HEAD}}
     <title>ephjos</title>
   </head>
 
   <body>
+    {{NAV}}
     <main>
       <section>
-        <h1>ephjos</h1>
-        <p>
-          SWE at Capital One.
-          Check out my
-          <a
-            href="/files/resume.pdf"
-            target="_blank"
-            rel="noreferrer noopener">resume</a>.
-        </p>
+        <h3>ephjos</h3>
+        <table>
+          <tr>
+            <td>SWE at Capital One</td>
+            <td class="shrink">
+              <a
+                href="https://github.com/ephjos"
+                target="_blank"
+                rel="noreferrer noopener">github</a>
+            </td>
+            <td class="shrink">
+              <a
+                href="/files/resume.pdf"
+                target="_blank"
+                rel="noreferrer noopener">resume</a>
+            </td>
+          </tr>
+        </table>
       </section>
       <section>
-        <h2>Posts</h2>
-        <ul>
-          <li>
-            <span>2024/11/28</span>
-            <a href="/posts/rtc-in-c-again">rtc in c again</a>
-          </li>
-          <li>
-            <span>2024/10/31</span>
-            <a href="/posts/3d-boids">3D boids</a>
-          </li>
-          <li>
-            <span>2024/10/26</span>
-            <a href="/posts/boids">boids</a>
-          </li>
-          <li>
-            <span>2024/06/11</span>
-            <a href="/posts/data-oriented-design">data-oriented-design</a>
-          </li>
-          <li>
-            <span>2023/05/23</span>
-            <a href="/posts/image2gol-v2">image2gol-v2</a>
-          </li>
-          <li>
-            <span>2023/04/15</span>
-            <a href="/posts/image2gol">image2gol</a>
-          </li>
-          <li>
-            <span>2022/04/13</span>
-            <a href="/posts/dolly-zoom">dolly-zoom</a>
-          </li>
-          <li>
-            <span>2022/04/03</span>
-            <a href="/posts/ray-tracing-in-a-weekend">ray-tracing-in-a-weekend</a>
-          </li>
-          <li>
-            <span>2022/03/14</span>
-            <a href="/posts/pi-day">pi-day</a>
-          </li>
-        </ul>
+        <h3>posts</h3>
+        <table>
+          <tr><td class="shrink">2024/11/28</td><td><a href="/posts/rtc-in-c-again">rtc in c again</a></td></tr>
+          <tr><td class="shrink">2024/10/31</td><td><a href="/posts/3d-boids">3D boids</a></td></tr>
+          <tr><td class="shrink">2024/10/26</td><td><a href="/posts/boids">boids</a></td></tr>
+          <tr><td class="shrink">2024/06/11</td><td><a href="/posts/data-oriented-design">data oriented design</a></td></tr>
+          <tr><td class="shrink">2023/05/23</td><td><a href="/posts/image2gol-v2">image2gol v2</a></td></tr>
+          <tr><td class="shrink">2023/04/15</td><td><a href="/posts/image2gol">image2gol</a></td></tr>
+          <tr><td class="shrink">2022/04/13</td><td><a href="/posts/dolly-zoom">dolly zoom</a></td></tr>
+          <tr><td class="shrink">2022/04/03</td><td><a href="/posts/ray-tracing-in-a-weekend">ray tracing in a weekend</a></td></tr>
+          <tr><td class="shrink">2022/03/14</td><td><a href="/posts/pi-day">pi day</a></td></tr>
+        </table>
       </section>
     </main>
   </body>
+  {{END}}
 </html>
 
 
