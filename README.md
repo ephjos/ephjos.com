@@ -1,4 +1,4 @@
-# ephjos.io
+# ephjos.com
 
 1. Setup ssh keys for target server
 2. ssh into server

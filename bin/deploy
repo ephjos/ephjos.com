@@ -1,8 +1,8 @@
 #!/bin/bash
 
-rsync -av ephjos.io ephjos.io:~/
-rsync -av lua/.init.lua ephjos.io:/var/www/html/.init.lua
-ssh ephjos.io '\
-  [ -f "/var/run/ephjos.io.pid" ] && kill -TERM $(cat /var/run/ephjos.io.pid); \
-  ./ephjos.io -SSS -c 0 -d -D /var/www/html -L /var/log/ephjos.io.log -P /var/run/ephjos.io.pid \
+rsync -av ephjos.com ephjos.com:~/
+rsync -av lua/.init.lua ephjos.com:/var/www/html/.init.lua
+ssh ephjos.com '\
+  [ -f "/var/run/ephjos.com.pid" ] && kill -TERM $(cat /var/run/ephjos.com.pid); \
+  ./ephjos.com -SSS -c 0 -d -D /var/www/html -L /var/log/ephjos.com.log -P /var/run/ephjos.com.pid \
   '
