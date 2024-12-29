@@ -3,12 +3,7 @@
 rsync -av ephjos.com ephjos.com:~/
 rsync -av lua/.init.lua ephjos.com:/var/www/html/.init.lua
 
-# Old kill not working, many processes present and this only kills one
-# [ -f "/var/run/ephjos.com.pid" ] && kill -TERM $(cat /var/run/ephjos.com.pid); \
-
 ssh ephjos.com '\
-  pkill -9 -f ".ape ./ephjos.com" \
-  '
-ssh ephjos.com '\
+  [ -f "/var/run/ephjos.com.pid" ] && kill -TERM $(cat /var/run/ephjos.com.pid); \
   ./ephjos.com -SSS -c 0 -d -D /var/www/html -L /var/log/ephjos.com.log -P /var/run/ephjos.com.pid \
   '

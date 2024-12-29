@@ -7,8 +7,8 @@ if IsDaemon() then
    ProgramGid(33)
    ProgramPort(80)
    ProgramPort(443)
-   ProgramLogPath('/var/log/ephjos.io.log')
-   ProgramPidPath('/var/run/ephjos.io.pid')
+   ProgramLogPath('/var/log/ephjos.com.log')
+   ProgramPidPath('/var/run/ephjos.com.pid')
    SetLogLevel(kLogError)
 end
 
