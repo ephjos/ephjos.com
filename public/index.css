@@ -1,6 +1,30 @@
+
+@font-face {
+    font-family: 'TX-02-Bold-Oblique';
+    src: url('TX-02-Bold-Oblique.woff2') format('woff2');
+    font-weight: 700;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'TX-02-Bold';
+    src: url('TX-02-Bold.woff2') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'TX-02-Oblique';
+    src: url('TX-02-Oblique.woff2') format('woff2');
+    font-weight: 400;
+    font-style: italic;
+}
+
 @font-face {
     font-family: 'TX-02-Regular';
-    src: url('TX-02-Regular.woff2')  format('woff2');
+    src: url('TX-02-Regular.woff2') format('woff2');
+    font-weight: 400;
+    font-style: normal;
 }
 
 * {
@@ -126,6 +150,7 @@ p {
 
 h1, h2, h3, h4, h5, h6 {
   margin: 0.5ch 0 0.25ch 0;
+  font-family: "TX-02-Bold", monospace;
 }
 h1, h3 { color: var(--text-alt); }
 h2 { color: var(--text-alt); }
