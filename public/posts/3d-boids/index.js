@@ -89,9 +89,6 @@ function drawBoid(p, v) {
 }
 
 function drawBoids() {
-  fill(foregroundColor);
-  stroke(foregroundColor);
-  beginGeometry();
   for (let i = 0; i < count; i++) {
     push();
     fill(colors[i]);
@@ -99,19 +96,14 @@ function drawBoids() {
     drawBoid(positions[i], velocities[i]);
     pop();
   }
-  const shape = endGeometry();
-  model(shape);
-  freeGeometry(shape);
 }
 
 function drawBox() {
+  push();
   noFill();
   stroke(foregroundColor);
-  beginGeometry();
   box(WIDTH-MARGIN, WIDTH-MARGIN, WIDTH-MARGIN);
-  const shape = endGeometry();
-  model(shape);
-  freeGeometry(shape);
+  pop();
 }
 
 function updateBoids() {
@@ -211,7 +203,7 @@ function draw() {
 
   orbitControl();
 
-  lights();
+  //lights();
 
   drawFPS();
   updateBoids();
