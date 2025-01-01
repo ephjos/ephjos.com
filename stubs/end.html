@@ -3,32 +3,35 @@
   const THEME_KEY = "theme";
   const DARK = "dark";
   const LIGHT = "light";
+
+  function setTheme(theme) {
+    document.documentElement.setAttribute("data-theme", theme);
+    window.localStorage.setItem(THEME_KEY, theme);
+  }
+
   window.onload = () => {
-    let currentTheme = window.localStorage.getItem(THEME_KEY);
+    const currentTheme = window.localStorage.getItem(THEME_KEY);
+
     if (currentTheme === null) {
       if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
-        currentTheme = DARK;
+        setTheme(DARK);
       } else {
-        currentTheme = LIGHT;
+        setTheme(LIGHT);
       }
+    } else {
+      setTheme(currentTheme);
     }
-
-    document.documentElement.setAttribute("data-theme", currentTheme);
-    window.localStorage.setItem(THEME_KEY, currentTheme);
   };
 
   function toggleColorscheme() {
-    let currentTheme = window.localStorage.getItem(THEME_KEY);
-
+    const currentTheme = window.localStorage.getItem(THEME_KEY);
 
     if (currentTheme == LIGHT) {
-      currentTheme = DARK;
+      setTheme(DARK);
     } else {
-      currentTheme = LIGHT;
+      setTheme(LIGHT);
     }
 
-    document.documentElement.setAttribute("data-theme", currentTheme);
-    window.localStorage.setItem(THEME_KEY, currentTheme);
   }
   COLORSCHEME_BUTTON.addEventListener("click", toggleColorscheme);
 </script>

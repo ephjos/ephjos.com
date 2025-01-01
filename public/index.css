@@ -83,6 +83,7 @@ html {
 
 .light, .dark {
   display: none;
+  font-family: "TX-02-Bold", monospace;
 }
 html[data-theme="light"] .light {
   display: none;
