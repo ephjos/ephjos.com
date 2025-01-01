@@ -92,7 +92,7 @@ function drawBoids() {
   for (let i = 0; i < count; i++) {
     push();
     fill(colors[i]);
-    stroke(colors[i]);
+    stroke(foregroundColor);
     drawBoid(positions[i], velocities[i]);
     pop();
   }

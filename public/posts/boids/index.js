@@ -87,7 +87,7 @@ function drawBoid(p, v) {
 function drawBoids() {
   for (let i = 0; i < count; i++) {
     fill(colors[i]);
-    stroke(colors[i]);
+    stroke(foregroundColor);
     drawBoid(positions[i], velocities[i]);
   }
 }
