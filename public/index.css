@@ -120,7 +120,7 @@ body {
   background: var(--bg);
   color: var(--text);
 
-  max-width: 62ch;
+  max-width: 82ch;
   margin: 1ch auto 1ch auto;
   padding: 0 1ch;
   overflow-x: hidden;
@@ -140,20 +140,16 @@ footer {
   padding-bottom: 3ch;
 }
 
-p, h1, h2, h3, h4, h5, h6 {
-  overflow-wrap: break-word;
-}
-
 p {
   margin: 1ch 0;
 }
 
 h1, h2, h3, h4, h5, h6 {
-  margin: 0.5ch 0 0.25ch 0;
+  /*margin: 0.5ch 0 0.25ch 0;*/
   font-family: "TX-02-Bold", monospace;
+  color: var(--text-alt);
+  overflow-wrap: break-word;
 }
-h1, h3 { color: var(--text-alt); }
-h2 { color: var(--text-alt); }
 
 pre {
   padding: 1ch;
@@ -197,7 +193,7 @@ hr {
   border: 0.125ch;
   border-style: none none dashed;
   color: var(--text);
-  margin: 0 auto;
+  margin: 1ch auto;
 
   user-select: none; /* supported by Chrome and Opera */
   -webkit-user-select: none; /* Safari */
@@ -211,12 +207,18 @@ table {
 }
 
 table, thead, tbody, tr, td, th {
-  border: 0.125ch dashed var(--text-muted);
+  /* border: 0.125ch dashed var(--text-muted); */
+  border: 0;
   border-collapse: collapse;
 }
 
 th, td {
   padding: 0.25ch;
+  text-align: left;
+  vertical-align: top;
+}
+
+th {
 }
 
 button {
@@ -234,3 +236,4 @@ ul, ol {
 .shrink {
   width: 1px;
 }
+
