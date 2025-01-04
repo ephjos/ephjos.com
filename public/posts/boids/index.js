@@ -40,9 +40,9 @@ function windowResized() {
 
 function setup() {
   const documentStyle = window.getComputedStyle(document.body)
-  const from_color = documentStyle.getPropertyValue('--lighest-ivy');
-  const to_color = documentStyle.getPropertyValue('--darkest-ivy');
-  foregroundColor = documentStyle.getPropertyValue('--text-muted');
+  const from_color = documentStyle.getPropertyValue('--ivy-50');
+  const to_color = documentStyle.getPropertyValue('--ivy-950');
+  foregroundColor = documentStyle.getPropertyValue('--border');
   backgroundColor = documentStyle.getPropertyValue('--bg');
 
   const canvas = createCanvas(WIDTH, HEIGHT);
@@ -87,7 +87,7 @@ function drawBoid(p, v) {
 function drawBoids() {
   for (let i = 0; i < count; i++) {
     fill(colors[i]);
-    stroke(foregroundColor);
+    stroke(colors[i]);
     drawBoid(positions[i], velocities[i]);
   }
 }
