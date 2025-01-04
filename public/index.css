@@ -61,7 +61,7 @@ html {
   --bg-alt: var(--light-ivy);
   --text: var(--black);
   --text-alt: var(--ivy);
-  --text-muted: var(--gray);
+  --border: var(--gray);
 
   /*
    * Document styles
@@ -107,7 +107,7 @@ html[data-theme="dark"] {
     --bg-alt: var(--dark-ivy);
     --text: var(--off-white);
     --text-alt: var(--off-ivy);
-    --text-muted: var(--gray);
+    --border: var(--gray);
 }
 
 a {
@@ -156,12 +156,12 @@ pre {
   padding: 1ch;
   overflow: auto;
   background-color: var(--bg-alt);
-  border: 0.125ch dashed var(--text-muted);
+  border: 0.125ch dashed var(--border);
 }
 
 code {
   background-color: var(--bg-alt);
-  border: 0.125ch dashed var(--text-muted);
+  border: 0.125ch dashed var(--border);
 }
 
 blockquote {
@@ -208,7 +208,7 @@ table {
 }
 
 table, thead, tbody, tr, td, th {
-  /* border: 0.125ch dashed var(--text-muted); */
+  /* border: 0.125ch dashed var(--border); */
   border: 0;
   border-collapse: collapse;
 }
