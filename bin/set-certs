@@ -1,6 +1,6 @@
 #!/bin/bash
 
-set -euxo pipefail
+set -euo pipefail
 
 ssh ephjos.com '\
   [ -f "/var/run/ephjos.com.pid" ] && kill -TERM $(cat /var/run/ephjos.com.pid); \

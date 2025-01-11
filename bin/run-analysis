@@ -1,0 +1,10 @@
+#!/bin/bash
+
+set -euo pipefail
+
+rsync -av ephjos.com ephjos.com:~/
+rsync -av bin/analyze ephjos.com:~/
+
+ssh ephjos.com './analyze'
+scp ephjos.com:~/report.html .
+open report.html

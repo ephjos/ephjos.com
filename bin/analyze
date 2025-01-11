@@ -1,0 +1,11 @@
+#!/bin/bash
+
+rg "\(req\) received" /var/log/ephjos.com.log | \
+  sed -e 's/[.+][0-9]*:tool[^]]*//g' | \
+  sed -e 's/HTTP11/HTTP\/1.1/g' | \
+  goaccess \
+    --log-format='I%dT%t] (req) received %h:%^ %H %m %U "%R" "%u"' \
+    --date-format="%Y-%m-%d" \
+    --time-format="%H:%M:%S" \
+    -a -o report.html \
+    -
