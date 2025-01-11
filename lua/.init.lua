@@ -9,7 +9,7 @@ if IsDaemon() then
    ProgramPort(443)
    ProgramLogPath('/var/log/ephjos.com.log')
    ProgramPidPath('/var/run/ephjos.com.pid')
-   SetLogLevel(kLogError)
+   SetLogLevel(kLogInfo)
 end
 
 -- https://stackoverflow.com/questions/22831701/lua-read-beginning-of-a-string
@@ -26,8 +26,6 @@ function OnHttpRequest()
 
    if GetScheme() == 'http' then
      ServeRedirect(301, GetUrl():gsub("^http://", "https://"))
-   elseif string.starts(GetPath(), "/micro") or string.starts(GetPath(), "/blog") then
-     ServeRedirect(301, GetUrl():gsub("/blog", "/posts"):gsub("/micro", "/posts"))
   else
      Route()
    end
