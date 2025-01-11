@@ -3,7 +3,8 @@
 rsync -av ephjos.com ephjos.com:~/
 rsync -av lua/.init.lua ephjos.com:/var/www/html/.init.lua
 
-ssh ephjos.com '\
+ssh -f ephjos.com '\
   [ -f "/var/run/ephjos.com.pid" ] && kill -TERM $(cat /var/run/ephjos.com.pid); \
+  mkdir -p /var/www/html; \
   ./ephjos.com -SSS -c 0 -d -D /var/www/html -L /var/log/ephjos.com.log -P /var/run/ephjos.com.pid \
   '
