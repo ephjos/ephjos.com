@@ -1,29 +1,29 @@
 
 @font-face {
-    font-family: 'TX-02-Bold-Oblique';
-    src: url('TX-02-Bold-Oblique.woff2') format('woff2');
+    font-family: 'TX-02-Black-SemiCondensed-Oblique';
+    src: url('TX-02-Black-SemiCondensed-Oblique.woff2') format('woff2');
     font-weight: 700;
     font-style: italic;
 }
 
 @font-face {
-    font-family: 'TX-02-Bold';
-    src: url('TX-02-Bold.woff2') format('woff2');
+    font-family: 'TX-02-Black-SemiCondensed';
+    src: url('TX-02-Black-SemiCondensed.woff2') format('woff2');
     font-weight: 700;
     font-style: normal;
 }
 
 @font-face {
-    font-family: 'TX-02-Oblique';
-    src: url('TX-02-Oblique.woff2') format('woff2');
-    font-weight: 400;
+    font-family: 'TX-02-SemiCondensed-Oblique';
+    src: url('TX-02-SemiCondensed-Oblique.woff2') format('woff2');
+    font-weight: 500;
     font-style: italic;
 }
 
 @font-face {
-    font-family: 'TX-02-Regular';
-    src: url('TX-02-Regular.woff2') format('woff2');
-    font-weight: 400;
+    font-family: 'TX-02-SemiCondensed';
+    src: url('TX-02-SemiCondensed.woff2') format('woff2');
+    font-weight: 500;
     font-style: normal;
 }
 
@@ -32,7 +32,7 @@
   padding: 0;
   border: none;
   box-sizing: border-box;
-  font-family: "TX-02-Regular", monospace;
+  font-family: "TX-02-SemiCondensed", monospace;
 }
 
 html {
@@ -94,7 +94,7 @@ html {
 
 .light, .dark {
   display: none;
-  font-family: "TX-02-Bold", monospace;
+  font-family: "TX-02-Black-SemiCondensed", monospace;
 }
 html[data-theme="light"] .light {
   display: none;
@@ -163,7 +163,7 @@ p {
 
 h1, h2, h3, h4, h5, h6 {
   /*margin: 0.5ch 0 0.25ch 0;*/
-  font-family: "TX-02-Bold", monospace;
+  font-family: "TX-02-Black-SemiCondensed", monospace;
   color: var(--text-alt);
   overflow-wrap: break-word;
 }
