@@ -1,8 +1,11 @@
 #!/bin/bash
 
+echo "Copying public/ to build/"
 rm -rf build
 cp -r public build
-echo "Created build/"
+
+echo "Removing _private directories from build/"
+find build -type d -name "_private" | xargs rm -rf
 
 head="$(<stubs/head.html)"
 nav="$(<stubs/nav.html)"
@@ -10,18 +13,12 @@ end="$(<stubs/end.html)"
 
 html_files="$(find build/ -name "*.html")"
 
+echo "Inserting stubs"
 sed -e '/{{HEAD}}/ {' -e 'r stubs/head.html' -e 'd' -e '}' -i $html_files
 sed -e '/{{NAV}}/ {' -e 'r stubs/nav.html' -e 'd' -e '}' -i $html_files
 sed -e '/{{END}}/ {' -e 'r stubs/end.html' -e 'd' -e '}' -i $html_files
 
-rm -vf ephjos.com
-cp redbean.com ephjos.com
-cd build
-zip ../ephjos.com -r * 
-# Remove compression from videos, this allows range requests to work
-zip ../ephjos.com -0 -r $(find vid -type f) 
-# Remove _private directories
-zip ../ephjos.com -d "*_private*"
-chmod +x ../ephjos.com
-echo "Built ephjos.com"
+html_files_count="$(echo "$html_files" | wc -w)"
+echo "Built $html_files_count HTML files"
 
+echo "DONE"
