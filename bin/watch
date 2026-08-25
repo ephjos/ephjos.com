@@ -4,6 +4,6 @@ echo "$$" > .watchpid
 
 find public/ bin/ stubs/ | entr -r -s "./bin/_build" &
 
-browser-sync start --server build --no-open --no-ui --files "./public/**" --files "./stubs/**"
+algernon -a -e --noheaders --watchdir . --dir build/ 0.0.0.0:3000
 
 wait;

@@ -1,14 +1,14 @@
 
 @font-face {
-    font-family: 'TX-02-Black-SemiCondensed-Oblique';
-    src: url('TX-02-Black-SemiCondensed-Oblique.woff2') format('woff2');
+    font-family: 'TX-02-Bold-SemiCondensed-Oblique';
+    src: url('TX-02-Bold-SemiCondensed-Oblique.woff2') format('woff2');
     font-weight: 700;
     font-style: italic;
 }
 
 @font-face {
-    font-family: 'TX-02-Black-SemiCondensed';
-    src: url('TX-02-Black-SemiCondensed.woff2') format('woff2');
+    font-family: 'TX-02-Bold-SemiCondensed';
+    src: url('TX-02-Bold-SemiCondensed.woff2') format('woff2');
     font-weight: 700;
     font-style: normal;
 }
@@ -33,6 +33,10 @@
   border: none;
   box-sizing: border-box;
   font-family: "TX-02-SemiCondensed", monospace;
+}
+
+input, button, textarea, select {
+  font: inherit;
 }
 
 html {
@@ -69,7 +73,7 @@ html {
   --bg-alt:          var(--ivy-200);
   --text:            var(--black);
   --text-alt:        var(--ivy-600);
-  --border:          var(--gray);
+  --border:          var(--off-white);
 
   --link-unvisited:  var(--cobalt);
   --link-visited:    var(--eminence);
@@ -92,28 +96,10 @@ html {
   -webkit-text-size-adjust: 100%;
 }
 
-.light, .dark {
-  display: none;
-  font-family: "TX-02-Black-SemiCondensed", monospace;
-}
-html[data-theme="light"] .light {
-  display: none;
-}
-html[data-theme="light"] .dark {
-  display: block;
-}
-html[data-theme="dark"] .light {
-  display: block;
-}
-html[data-theme="dark"] .dark {
-  display: none;
-}
-
-
 html[data-theme="dark"] {
   --bg:              var(--ivy-950);
   --bg-alt:          var(--ivy-800);
-  --text:            var(--white);
+  --text:            var(--off-white);
   --text-alt:        var(--ivy-400);
   --border:          var(--gray);
 
@@ -136,6 +122,13 @@ body {
   margin: 1ch auto 1ch auto;
   padding: 0 1ch;
   overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  min-height: calc(100vh - 2ch);
+}
+
+main {
+  flex: 1;
 }
 
 nav {
@@ -152,9 +145,12 @@ nav img {
 }
 
 footer {
+  flex: 0;
+  padding: 3ch;
   width: 100%;
   text-align: center;
-  padding-bottom: 3ch;
+  color: var(--text-alt);
+  font-size: 75%;
 }
 
 p {
@@ -163,7 +159,7 @@ p {
 
 h1, h2, h3, h4, h5, h6 {
   /*margin: 0.5ch 0 0.25ch 0;*/
-  font-family: "TX-02-Black-SemiCondensed", monospace;
+  font-family: "TX-02-Bold-SemiCondensed", monospace;
   color: var(--text-alt);
   overflow-wrap: break-word;
 }
@@ -208,7 +204,7 @@ video {
 hr {
   width: 100%;
   border: 0.125ch;
-  border-style: none none dashed;
+  border-style: none none solid;
   color: var(--text);
   margin: 1ch auto;
 
@@ -221,22 +217,44 @@ hr {
 
 table {
   width: 100%;
+  border-spacing: 0;
+  border-collapse: collapse;
+  border: 0.125ch solid var(--border);
 }
 
 table, thead, tbody, tr, td, th {
-  /* border: 0.125ch dashed var(--border); */
-  border: 0;
-  border-collapse: collapse;
 }
 
 th, td {
-  padding: 0.25ch;
+  padding: 0.5ch 1ch;
   text-align: left;
   vertical-align: top;
+  border-bottom: 0.125ch solid var(--border);
+}
+
+thead {
+  background: var(--bg-alt);
+  border: 0.125ch solid var(--text-alt);
+}
+
+th:nth-child(1) {
+  width: 16ch;
 }
 
 th {
+  font-family: "TX-02-Bold-SemiCondensed", monospace;
+  border-bottom: 0.125ch solid var(--text-alt);
 }
+
+/*
+tr:nth-child(odd) {
+    background-color: var(--bg);
+}
+
+tr:nth-child(even) {
+    background-color: var(--bg-alt);
+}
+*/
 
 button {
   padding: 0.5em;
@@ -254,4 +272,72 @@ ul, ol {
 .shrink {
   width: 1px;
 }
+
+.light, .dark {
+  display: none;
+  font-family: "TX-02-Bold-SemiCondensed", monospace;
+}
+
+html[data-theme="light"] .light {
+  display: none;
+}
+
+html[data-theme="light"] .dark {
+  display: block;
+}
+
+html[data-theme="dark"] .light {
+  display: block;
+}
+
+html[data-theme="dark"] .dark {
+  display: none;
+}
+
+#colorscheme-button:active {
+  box-shadow: inset  0.25ch  0.25ch 0ch var(--bg-alt),
+              inset -0.25ch -0.25ch 0ch var(--bg-alt);
+}
+
+/******************************************************************************/
+/* Name animation */
+
+#name * {
+  display: inline-block;
+  transition: all 250ms;
+  text-decoration: none;
+  color: var(--text);
+}
+
+#jos {
+  transform: translateX(0);
+  text-transform: none;
+}
+
+#eph {
+  transform: translateX(0);
+}
+
+#rest {
+  transform: translateX(0);
+  opacity: 1;
+}
+
+#name:focus-within #jos,
+#name:hover #jos {
+  transform: translateX(3ch);
+  text-transform: lowercase;
+}
+
+#name:focus-within #eph,
+#name:hover #eph {
+  transform: translateX(-3ch);
+}
+
+#name:focus-within #rest,
+#name:hover #rest {
+  transform: translateX(100ch);
+  opacity: 0;
+}
+/******************************************************************************/
 
