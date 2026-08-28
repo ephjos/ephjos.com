@@ -1,33 +1,34 @@
 
 @font-face {
     font-family: 'TX-02-Bold-SemiCondensed-Oblique';
-    src: url('TX-02-Bold-SemiCondensed-Oblique.woff2') format('woff2');
+    src: url('00-assets/TX-02-Bold-SemiCondensed-Oblique.woff2') format('woff2');
     font-weight: 700;
     font-style: italic;
 }
 
 @font-face {
     font-family: 'TX-02-Bold-SemiCondensed';
-    src: url('TX-02-Bold-SemiCondensed.woff2') format('woff2');
+    src: url('00-assets/TX-02-Bold-SemiCondensed.woff2') format('woff2');
     font-weight: 700;
     font-style: normal;
 }
 
 @font-face {
     font-family: 'TX-02-SemiCondensed-Oblique';
-    src: url('TX-02-SemiCondensed-Oblique.woff2') format('woff2');
+    src: url('00-assets/TX-02-SemiCondensed-Oblique.woff2') format('woff2');
     font-weight: 500;
     font-style: italic;
 }
 
 @font-face {
     font-family: 'TX-02-SemiCondensed';
-    src: url('TX-02-SemiCondensed.woff2') format('woff2');
+    src: url('00-assets/TX-02-SemiCondensed.woff2') format('woff2');
     font-weight: 500;
     font-style: normal;
 }
 
-* {
+*,
+*::file-selector-button {
   margin: 0;
   padding: 0;
   border: none;
@@ -255,13 +256,22 @@ tr:nth-child(even) {
 }
 */
 
-button {
+input {
+  width: 100%;
+}
+
+button,
+input[type="file"]::file-selector-button {
   padding: 0.5em;
   cursor: pointer;
   background: var(--text-alt);
   color: var(--bg);
   box-shadow: 0.5ch 0.5ch 0ch var(--bg-alt);
   height: fit-content;
+}
+
+input[type="file"]::file-selector-button {
+  margin: 1rem;
 }
 
 ul, ol {
@@ -293,7 +303,8 @@ html[data-theme="dark"] .dark {
   display: none;
 }
 
-#colorscheme-button:active {
+button:active,
+input[type="file"]::file-selector-button:active {
   box-shadow: inset  0.25ch  0.25ch 0ch var(--bg-alt),
               inset -0.25ch -0.25ch 0ch var(--bg-alt);
 }

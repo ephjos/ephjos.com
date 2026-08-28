@@ -4,9 +4,9 @@ Deployed using AWS Amplify from S3.
 
 ## fonts
 
-now using licensed fonts. gitignored per the license, will require placing file
+now using a licensed font. gitignored per the license, will require placing file
 from personal backup into repo to work. `.woff2` files go directly in
-`public/`.
+`public/00-assets`.
 
 ## aws
 
