@@ -2,7 +2,32 @@
 <html lang="en">
 
   <head>
-    {{HEAD}}
+<!-- BEG: head -->
+<script>
+  if (window.localStorage.getItem("theme") == "dark") {
+    document.documentElement.setAttribute("data-theme", "dark");
+  } else {
+    document.documentElement.setAttribute("data-theme", "light");
+  }
+</script>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="NOODP,NOYDIR" />
+<meta name="color-scheme" content="light dark">
+
+<meta property="og:image" content="/img/logo_card.webp">
+<meta property="twitter:image" content="/img/logo_card.webp">
+
+<link rel="stylesheet" href="/index.css">
+<link rel="shortcut icon" href="/favicon.ico" />
+<link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+<meta name="apple-mobile-web-app-title" content="EPHJOS" />
+<link rel="manifest" href="/site.webmanifest" />
+<!-- FIN: head -->
 
     <style>
 .container {
@@ -39,9 +64,21 @@ canvas {
   </head>
 
   <body>
-    {{NAV}}
+<!-- BEG: nav -->
+<nav>
+  <a href="/" aria-label="Return to the home page">
+    <img class="dark" alt="EPHJOS icon displayed as home button" src="/favicon.svg" />
+    <img class="light" alt="EPHJOS icon displayed as home button (dark version)" src="/img/logo_dark.svg" />
+  </a>
+  <a href="/about">/about</a>
+  <button id="colorscheme-button">
+    <span class="light">LIGHT</span>
+    <span class="dark">DARK</span>
+  </button>
+</nav>
+<!-- FIN: nav -->
     <main>
-      <span>2022/04/03</span>
+      <span>2022-04-03</span>
       <h2>Ray Tracing in a Weekend</h2>
       <hr />
 
@@ -49,10 +86,10 @@ canvas {
         <p>
           I have been distracted with a few things, mostly playing around with
           WebGL. I was pulled down the
-          <a href="https://www.shadertoy.com/">ShaderToy↗</a> rabbit hole and
+          <a href="https://www.shadertoy.com/">ShaderToy</a> rabbit hole and
           have been playing around with all kinds of ideas. Most notably, I
           implemented the
-          <a href="https://raytracing.github.io/books/RayTracingInOneWeekend.html">Ray Tracing in One Weekend↗</a> 
+          <a href="https://raytracing.github.io/books/RayTracingInOneWeekend.html">Ray Tracing in One Weekend</a> 
           project in a fragment shader, which
           you will see below. I learned quite a bit about WebGL, passing data
           to shaders, and pseudo-random number generation in shaders. The below
@@ -66,7 +103,7 @@ canvas {
           taking random rays when we bounce, instead of the exact reflection.
           I implemented some basic WebGL abstractions
           and the progressive rendering using some of the logic in
-          <a href="https://github.com/evanw/webgl-path-tracing">evanw's webgl-path-tracing↗</a>.
+          <a href="https://github.com/evanw/webgl-path-tracing">evanw's webgl-path-tracing</a>.
         </p>
 
         <div class="container">
@@ -81,7 +118,7 @@ canvas {
 
         <p>
           I also found
-          <a href="https://github.com/sschoenholz/WebGL-Raytracer">sschoenholz's WebGL-Raytracer↗</a> 
+          <a href="https://github.com/sschoenholz/WebGL-Raytracer">sschoenholz's WebGL-Raytracer</a> 
           which does some cool texture
           packing to pass the scene information to the shader.
         </p>
@@ -95,7 +132,47 @@ canvas {
         </p>
       </section>
     </main>
-    {{END}}
+<!-- BEG: end -->
+<footer>© Copyright 2026, ephjos.</footer>
+
+<script>
+  const COLORSCHEME_BUTTON = document.querySelector("#colorscheme-button");
+  const THEME_KEY = "theme";
+  const DARK = "dark";
+  const LIGHT = "light";
+
+  function setTheme(theme) {
+    document.documentElement.setAttribute("data-theme", theme);
+    window.localStorage.setItem(THEME_KEY, theme);
+  }
+
+  window.onload = () => {
+    const currentTheme = window.localStorage.getItem(THEME_KEY);
+
+    if (currentTheme === null) {
+      if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+        setTheme(DARK);
+      } else {
+        setTheme(LIGHT);
+      }
+    } else {
+      setTheme(currentTheme);
+    }
+  };
+
+  function toggleColorscheme() {
+    const currentTheme = window.localStorage.getItem(THEME_KEY);
+
+    if (currentTheme == LIGHT) {
+      setTheme(DARK);
+    } else {
+      setTheme(LIGHT);
+    }
+
+  }
+  COLORSCHEME_BUTTON.addEventListener("click", toggleColorscheme);
+</script>
+<!-- FIN: end -->
   </body>
 </html>
 

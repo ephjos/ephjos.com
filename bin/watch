@@ -1,9 +1,0 @@
-#!/bin/bash
-
-echo "$$" > .watchpid
-
-find public/ bin/ stubs/ | entr -r -s "./bin/_build" &
-
-algernon -a -e --noheaders --watchdir . --dir build/ 0.0.0.0:3000
-
-wait;

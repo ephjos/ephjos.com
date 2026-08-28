@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+<!-- BEG: head -->
+<script>
+  if (window.localStorage.getItem("theme") == "dark") {
+    document.documentElement.setAttribute("data-theme", "dark");
+  } else {
+    document.documentElement.setAttribute("data-theme", "light");
+  }
+</script>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="NOODP,NOYDIR" />
+<meta name="color-scheme" content="light dark">
+
+<meta property="og:image" content="/img/logo_card.webp">
+<meta property="twitter:image" content="/img/logo_card.webp">
+
+<link rel="stylesheet" href="/index.css">
+<link rel="shortcut icon" href="/favicon.ico" />
+<link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+<meta name="apple-mobile-web-app-title" content="EPHJOS" />
+<link rel="manifest" href="/site.webmanifest" />
+<!-- FIN: head -->
+
+    <title>Loose Ends</title>
+  </head>
+
+  <body>
+<!-- BEG: nav -->
+<nav>
+  <a href="/" aria-label="Return to the home page">
+    <img class="dark" alt="EPHJOS icon displayed as home button" src="/favicon.svg" />
+    <img class="light" alt="EPHJOS icon displayed as home button (dark version)" src="/img/logo_dark.svg" />
+  </a>
+  <a href="/about">/about</a>
+  <button id="colorscheme-button">
+    <span class="light">LIGHT</span>
+    <span class="dark">DARK</span>
+  </button>
+</nav>
+<!-- FIN: nav -->
+    <main>
+      <span>2026-08-27</span>
+      <h2>Loose Ends</h2>
+      <hr />
+
+      <p>
+        There are a handful of projects I've done over the years that I never
+        shared or discussed publicly, so I'm going to take care of them all in
+        one shot. Most of these are poorly documented and unorganized, which is
+        why I've kept them private. I've made the private repos public and gave
+        them a little clean them up.
+      </p>
+
+      <hr>
+      <h3><a href="https://github.com/ephjos/card-pricing">Card Pricing</a></h3>
+      <span>2020-10-16</span>
+      <p>
+        It was Covid, I was a remote college student, and I had a lot of free
+        time. I decided to dig up my old Yugioh cards and see if they were
+        worth anything. Since I had a lot of cards and I didn't know anything
+        about the game, I needed a better way to catalog the cards and figure
+        out what I had.
+      </p>
+      <p>
+        I wrote a python script that would take a camera input and use OpenCV
+        to find a card in the frame and extract information from it. This was
+        a very fun and rewarding project and I remember selling some cards to 
+        an online shop for ~$200 at the end.
+      </p>
+      <p>
+        The setup for this was extremely janky involving an old iPhone using
+        some wifi video feed app and a makeshift cardboard box tripod. This let
+        me sit at my desk, slide the cards into frame, extract the card ID,
+        call the https://yugiohprices.com/ API (RIP), and save the card into a
+        CSV. All I had to do was position the card in the frame, verify that
+        the card ID was detected correctly, and confirm that the name that came
+        back from the API matched the card. 
+      </p>
+      <p>
+        Then I loaded the data into a sqlite3 database to do some querying, found
+        the valuable cards, and shipped them off to the card store.
+      </p>
+      <p>
+        I loved being able to apply what I learned in my computer vision
+        classes (edge detection, homographies, kernels, OCR) and build a useful
+        interactive application that made me a little bit of money.
+      </p>
+
+      <hr>
+      <h3><a href="https://github.com/ephjos/stop-waiting-for-godot">Tanks For the Memories</a></h3>
+      <span>2021-09-06</span>
+      <p>
+        This is the first game I ever published online and it was part of the
+        <a href="https://itch.io/jam/stop-waiting-for-godot">Stop Waiting for Godot</a>
+        game jam. This was my first time using the 
+        <a href="https://godotengine.org/">Godot</a>
+        game engine as I thought this would be a good learning experience.
+      </p>
+      <p>
+        I used visual assets from the great
+        <a href="https://kenney.nl/">kenney.nl</a>
+        along with free sound effects and music.
+      </p>
+
+      <p>
+        I received 
+        <a href="https://itch.io/post/11575620">a single comment</a>
+        on this game, and I can still remember how happy it made me that somebody
+        enjoyed this horrible little game I threw together in less than 24 hours.
+        It still makes me happy.
+      </p>
+
+      <p>
+        Yes, the name of this game is a
+        <a href="https://en.wikipedia.org/wiki/Thnks_fr_th_Mmrs">Fall Out Boy</a>
+        reference and I stand by it.
+      </p>
+
+      <hr>
+      <h3><a href="https://github.com/ephjos/plat">plat</a></h3>
+      <span>2021-10-03</span>
+      <p>
+        plat is a 2D platformer I made to further learn the 
+        <a href="https://godotengine.org/">Godot</a>
+        game engine. I made it in a little under a month and published it on
+        <a href="https://ephjos.itch.io/plat">itch.io</a>
+        (go play).
+      </p>
+      <p>
+        This also used assets from 
+        <a href="https://kenney.nl/">kenney.nl</a>
+        and I made the sound effects and music myself this time.
+        I remember using some mobile app to make the music but I can't track
+        down what it was. I'm still proud of this stupid song.
+      </p>
+      <p>
+        I'm also proud of the particle effects, transitions, and animations
+        that I was able to create. My favorite is the level transition.
+      </p>
+      <p>
+        I remember being surprised by the amount of work this was. I didn't
+        appreciate the amount of work I had to put in to enable the game design
+        phase to even begin. Creating tilemaps, systems for setting up enemy
+        paths, adding new enemies, and testing gameplay features all were
+        entire projects in their own respect.
+      </p>
+      <p>
+        The experience of creating an explicit state machine for the player 
+        controls was informative. Shoutout to the
+        <a href="https://www.youtube.com/watch?v=j_pM3CiQwts">GameEndeavor</a>
+        tutorials. This made tweaking the game feel a lot easier, which was
+        much appreciated due to how hard that problem can be.
+      </p>
+      <p>
+        I'm most proud of myself for shipping this. I need to do that more.
+      </p>
+
+      <hr>
+      <h3><a href="https://github.com/ephjos/ttt-bitboard">ttt-bitboard</a></h3>
+      <span>2022-08-07</span>
+      <p>
+        This was a small toy project to play with some of the ideas and methods
+        discussed in Cameron Browne's
+        <a href="https://www.researchgate.net/publication/279031895_Bitboard_Methods_for_Games">Bitboard Methods for Games</a>
+        paper. This implements a CLI Tic-Tac-Toe game using bitboards for the
+        game state, implemented in C. Each Tic-Tac-Toe board can be represented 
+        with 9 bits, so we use a 16 bit short for each player's state.
+      </p>
+      <p>
+        I found this to be a fun and interesting intro to these concepts, and
+        would recommend it as an introduction to working directly on the bits
+        of integers to represent different types of state.
+      </p>
+
+      <hr>
+      <h3><a href="https://github.com/ephjos/pi-clock">pi-clock</a></h3>
+      <span>2024-04-23</span>
+      <p>
+        My girlfriend, now wife, was using an Amazon Alexa every morning to get
+        weather updates and other useful information while getting ready. I
+        wanted to replace this with something more personal that didn't involve
+        having an always-on microphone in our apartment, so I created pi-clock.
+      </p>
+      <p>
+        This is a simple webapp that runs on a Raspberry Pi set to Kiosk mode.
+        It displays weather forecast information and a live satellite GIF, along
+        with the date and time. This involves a couple systemd processes, a python3
+        http.server, and a small JavaScript app.
+      </p>
+      <p>
+        It was really cool to build a physical product using my software
+        skills. This also introduced fun challenges like optimizing startup
+        time, tuning the page's design to best work with the monitor I was
+        using, and ensuring things gracefully fell back in the case something
+        didn't load.
+      </p>
+      <p>
+        My favorite of these problems to solve was how to minimize burn-in on the screen.
+        To address this, I added a swipe (a vertical white and black line) that passes over the whole
+        screen on a regular interval.
+      </p>
+      <p>
+        I enjoyed the experience of making some changes, running
+        <code>./deploy.sh</code> and seeing the screen on the Pi next to me
+        update. There is something special and tangible about making things
+        like this that I often don't get to feel with software.
+      </p>
+
+      <hr>
+      <h3><a href="https://github.com/ephjos/mercury">mercury</a></h3>
+      <span>2025-07-10</span>
+      <p>
+        A friend of mine introduced us to a card game that involved scanning a
+        QR code, blindly listening to the song that would be played, and then
+        guessing the year that song was released relative to the cards you've
+        already seen. We had a lot of fun playing this game and I wanted to make
+        her a custom deck for her birthday, so I created mercury.
+      </p>
+      <p>
+        This project takes a public Spotify playlist and uses the API to
+        produce a deck of cards with the relevant information present. It
+        produces the card images themselves and a design for the box
+        automatically. You can also have the script display statistics about
+        the playlist and deck you've built, which can help visualize how fair
+        or hard the deck will be to play.
+      </p>
+      <p>
+        Most importantly, you can take the output directly to someone like
+        <a href="https://www.makeplayingcards.com/">Make Playing Cards</a>
+        and have the physical deck made and mailed to you. I didn't account for
+        the production time here, so I missed my friends birthday. However, I
+        was eventually able to give this to her and seeing somebody open and
+        use something I made with software was once again incredibly rewarding.
+      </p>
+
+      <hr>
+      <p>
+        Like most people in this line of work, I got into computers and
+        software because they were fun. It feels like we've been somehow losing
+        that along the way.
+      </p>
+      <p>
+        I'm working to get it back.
+      </p>
+
+    </main>
+<!-- BEG: end -->
+<footer>© Copyright 2026, ephjos.</footer>
+
+<script>
+  const COLORSCHEME_BUTTON = document.querySelector("#colorscheme-button");
+  const THEME_KEY = "theme";
+  const DARK = "dark";
+  const LIGHT = "light";
+
+  function setTheme(theme) {
+    document.documentElement.setAttribute("data-theme", theme);
+    window.localStorage.setItem(THEME_KEY, theme);
+  }
+
+  window.onload = () => {
+    const currentTheme = window.localStorage.getItem(THEME_KEY);
+
+    if (currentTheme === null) {
+      if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+        setTheme(DARK);
+      } else {
+        setTheme(LIGHT);
+      }
+    } else {
+      setTheme(currentTheme);
+    }
+  };
+
+  function toggleColorscheme() {
+    const currentTheme = window.localStorage.getItem(THEME_KEY);
+
+    if (currentTheme == LIGHT) {
+      setTheme(DARK);
+    } else {
+      setTheme(LIGHT);
+    }
+
+  }
+  COLORSCHEME_BUTTON.addEventListener("click", toggleColorscheme);
+</script>
+<!-- FIN: end -->
+  </body>
+</html>
+

@@ -1,5 +1,2 @@
-ephjos.io
-ephjos.com
-build/
-.watchpid
-report.html
+*.ttf
+*.woff2

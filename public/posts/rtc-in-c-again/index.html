@@ -2,15 +2,52 @@
 <html lang="en">
 
   <head>
-    {{HEAD}}
+<!-- BEG: head -->
+<script>
+  if (window.localStorage.getItem("theme") == "dark") {
+    document.documentElement.setAttribute("data-theme", "dark");
+  } else {
+    document.documentElement.setAttribute("data-theme", "light");
+  }
+</script>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="NOODP,NOYDIR" />
+<meta name="color-scheme" content="light dark">
+
+<meta property="og:image" content="/img/logo_card.webp">
+<meta property="twitter:image" content="/img/logo_card.webp">
+
+<link rel="stylesheet" href="/index.css">
+<link rel="shortcut icon" href="/favicon.ico" />
+<link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+<meta name="apple-mobile-web-app-title" content="EPHJOS" />
+<link rel="manifest" href="/site.webmanifest" />
+<!-- FIN: head -->
 
     <title>RTC in C Again</title>
   </head>
 
   <body>
-    {{NAV}}
+<!-- BEG: nav -->
+<nav>
+  <a href="/" aria-label="Return to the home page">
+    <img class="dark" alt="EPHJOS icon displayed as home button" src="/favicon.svg" />
+    <img class="light" alt="EPHJOS icon displayed as home button (dark version)" src="/img/logo_dark.svg" />
+  </a>
+  <a href="/about">/about</a>
+  <button id="colorscheme-button">
+    <span class="light">LIGHT</span>
+    <span class="dark">DARK</span>
+  </button>
+</nav>
+<!-- FIN: nav -->
     <main>
-      <span>2024/11/28</span>
+      <span>2024-11-28</span>
       <h2>RTC in C Again</h2>
       <hr />
       <p>
@@ -34,7 +71,47 @@
         if keep your code simple and stay focused on transforming your data.
       </p>
     </main>
-    {{END}}
+<!-- BEG: end -->
+<footer>© Copyright 2026, ephjos.</footer>
+
+<script>
+  const COLORSCHEME_BUTTON = document.querySelector("#colorscheme-button");
+  const THEME_KEY = "theme";
+  const DARK = "dark";
+  const LIGHT = "light";
+
+  function setTheme(theme) {
+    document.documentElement.setAttribute("data-theme", theme);
+    window.localStorage.setItem(THEME_KEY, theme);
+  }
+
+  window.onload = () => {
+    const currentTheme = window.localStorage.getItem(THEME_KEY);
+
+    if (currentTheme === null) {
+      if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+        setTheme(DARK);
+      } else {
+        setTheme(LIGHT);
+      }
+    } else {
+      setTheme(currentTheme);
+    }
+  };
+
+  function toggleColorscheme() {
+    const currentTheme = window.localStorage.getItem(THEME_KEY);
+
+    if (currentTheme == LIGHT) {
+      setTheme(DARK);
+    } else {
+      setTheme(LIGHT);
+    }
+
+  }
+  COLORSCHEME_BUTTON.addEventListener("click", toggleColorscheme);
+</script>
+<!-- FIN: end -->
   </body>
 </html>
 

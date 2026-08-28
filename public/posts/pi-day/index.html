@@ -2,7 +2,32 @@
 <html lang="en">
 
   <head>
-    {{HEAD}}
+<!-- BEG: head -->
+<script>
+  if (window.localStorage.getItem("theme") == "dark") {
+    document.documentElement.setAttribute("data-theme", "dark");
+  } else {
+    document.documentElement.setAttribute("data-theme", "light");
+  }
+</script>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="NOODP,NOYDIR" />
+<meta name="color-scheme" content="light dark">
+
+<meta property="og:image" content="/img/logo_card.webp">
+<meta property="twitter:image" content="/img/logo_card.webp">
+
+<link rel="stylesheet" href="/index.css">
+<link rel="shortcut icon" href="/favicon.ico" />
+<link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+<meta name="apple-mobile-web-app-title" content="EPHJOS" />
+<link rel="manifest" href="/site.webmanifest" />
+<!-- FIN: head -->
 
     <style>
 .container {
@@ -49,9 +74,21 @@ input {
   </head>
 
   <body>
-    {{NAV}}
+<!-- BEG: nav -->
+<nav>
+  <a href="/" aria-label="Return to the home page">
+    <img class="dark" alt="EPHJOS icon displayed as home button" src="/favicon.svg" />
+    <img class="light" alt="EPHJOS icon displayed as home button (dark version)" src="/img/logo_dark.svg" />
+  </a>
+  <a href="/about">/about</a>
+  <button id="colorscheme-button">
+    <span class="light">LIGHT</span>
+    <span class="dark">DARK</span>
+  </button>
+</nav>
+<!-- FIN: nav -->
     <main>
-      <span>2022/03/14</span>
+      <span>2022-03-14</span>
       <h2>Pi Day</h2>
       <hr />
 
@@ -59,12 +96,12 @@ input {
         <p>
           In celebration of Pi Day, I figured that I could get around to
           implementing a simulation of
-          <a href="https://en.wikipedia.org/wiki/Buffon%27s_needle_problem">Buffon's Needle↗</a> 
+          <a href="https://en.wikipedia.org/wiki/Buffon%27s_needle_problem">Buffon's Needle</a> 
           for approximating pi. I've implemented
           this in client-side JS and used WebGL for rendering. It's been
           a while since I used WebGL directly and wrote some vanilla JS.
           The
-          <a href="https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API/Tutorial/Using_shaders_to_apply_color_in_WebGL">Mozilla docs for WebGL↗</a> 
+          <a href="https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API/Tutorial/Using_shaders_to_apply_color_in_WebGL">Mozilla docs for WebGL</a> 
           have tons of great examples that
           can be easily used as a jumping off point. This was a
           fun exercise, and it was interesting to work with this first hand.
@@ -103,12 +140,52 @@ input {
         <p>
           If you want to check out a better version of this simulation with
           more details on the math, check out
-          <a href="https://ogden.eu/pi/">Thomas Ogden's website↗</a>.
+          <a href="https://ogden.eu/pi/">Thomas Ogden's website</a>.
         </p>
 
       </section>
     </main>
-    {{END}}
+<!-- BEG: end -->
+<footer>© Copyright 2026, ephjos.</footer>
+
+<script>
+  const COLORSCHEME_BUTTON = document.querySelector("#colorscheme-button");
+  const THEME_KEY = "theme";
+  const DARK = "dark";
+  const LIGHT = "light";
+
+  function setTheme(theme) {
+    document.documentElement.setAttribute("data-theme", theme);
+    window.localStorage.setItem(THEME_KEY, theme);
+  }
+
+  window.onload = () => {
+    const currentTheme = window.localStorage.getItem(THEME_KEY);
+
+    if (currentTheme === null) {
+      if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+        setTheme(DARK);
+      } else {
+        setTheme(LIGHT);
+      }
+    } else {
+      setTheme(currentTheme);
+    }
+  };
+
+  function toggleColorscheme() {
+    const currentTheme = window.localStorage.getItem(THEME_KEY);
+
+    if (currentTheme == LIGHT) {
+      setTheme(DARK);
+    } else {
+      setTheme(LIGHT);
+    }
+
+  }
+  COLORSCHEME_BUTTON.addEventListener("click", toggleColorscheme);
+</script>
+<!-- FIN: end -->
   </body>
 </html>
 
